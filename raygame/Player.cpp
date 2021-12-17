@@ -26,8 +26,11 @@ void Player::update(float deltaTime)
 
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
+	//If the velocity is greater than 0...
 	if (m_moveComponent->getVelocity().getMagnitude() > 0)
+		//...Rotate the player
 		getTransform()->setForward(m_moveComponent->getVelocity());
 
+	//Set the players velocity 
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 }
