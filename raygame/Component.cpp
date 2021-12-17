@@ -2,6 +2,7 @@
 
 Component::Component()
 {
+
 	m_owner = nullptr;
 	m_name = nullptr;
 	m_started = false;
