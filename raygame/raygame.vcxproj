@@ -154,6 +154,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="FollowEnemy.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="FollowEnemy.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="MainScene.h" />
