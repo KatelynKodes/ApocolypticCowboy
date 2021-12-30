@@ -2,6 +2,7 @@
 #include "InputComponent.h"
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
+#include "Transform2D.h"
 
 void Player::start()
 {
@@ -11,6 +12,8 @@ void Player::start()
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png")));
+
+
 
 	//Set spawn point
 	//Set move speed
@@ -23,5 +26,11 @@ void Player::update(float deltaTime)
 
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	m_moveComponent->setVelocity(moveDirection * 500);
+	//If the velocity is greater than 0...
+	if (m_moveComponent->getVelocity().getMagnitude() > 0)
+		//...Rotate the player
+		getTransform()->setForward(m_moveComponent->getVelocity());
+
+	//Set the players velocity 
+	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 }
