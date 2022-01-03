@@ -16,4 +16,7 @@ void Enemy::start()
 	//Set the starting values
 	m_health = m_maxhealth;
 	m_isAlive = true;
+
+	//Call base start method
+	Actor::start();
 }

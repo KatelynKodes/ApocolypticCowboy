@@ -71,9 +71,6 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Colliders</Filter>
     </ClCompile>
-    <ClCompile Include="FollowComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BulletComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -81,6 +78,12 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -133,9 +136,6 @@
     <ClInclude Include="Collider.h">
       <Filter>Colliders</Filter>
     </ClInclude>
-    <ClInclude Include="FollowComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BulletComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -146,6 +146,12 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="SpriteComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
