@@ -9,3 +9,4 @@ MathLibrary::Vector2 InputComponent::getMoveAxis()
 	//Return a new vector representing the move direction
 	return MathLibrary::Vector2( moveDirectionX, moveDirectionY);
 }
+

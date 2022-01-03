@@ -12,6 +12,8 @@ public:
 
 	MathLibrary::Vector2 getMoveAxis();
 
+	bool getSpacePress() { return RAYLIB_H::IsKeyPressed(m_action1Key); }
+
 private:
 	RAYLIB_H::KeyboardKey m_action1Key = RAYLIB_H::KeyboardKey::KEY_SPACE;
 	RAYLIB_H::KeyboardKey m_action2Key = RAYLIB_H::KeyboardKey::KEY_LEFT_SHIFT;

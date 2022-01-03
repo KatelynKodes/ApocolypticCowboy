@@ -3,6 +3,8 @@
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
 #include "Transform2D.h"
+#include "Bullet.h"
+#include "Engine.h"
 #include <iostream>
 
 void Player::start()
@@ -26,6 +28,14 @@ void Player::update(float deltaTime)
 	Actor::update(deltaTime);
 
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
+
+	if (m_inputComponent->getSpacePress()) 
+	{
+		Scene* currentScene = Engine::getCurrentScene();
+		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+		bullet->getTransform()->setScale({ 50, 50 });
+		currentScene->addActor(bullet);
+	}
 
 	//If the velocity is greater than 0...
 	if (m_moveComponent->getVelocity().getMagnitude() > 0)
