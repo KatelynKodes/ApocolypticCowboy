@@ -1,3 +1,4 @@
+#pragma once
 #include "Actor.h"
 class SpriteComponent;
 class MoveComponent;
@@ -28,7 +29,7 @@ public:
 	/// <returns> The m_isAlive value </returns>
 	bool GetIsAlive() { return m_isAlive; }
 
-	void start() override;
+	virtual void start() override;
 
 protected:
 	//Set the get functions of getting/setting the sprite and move components value to "protected" to avoid other 
