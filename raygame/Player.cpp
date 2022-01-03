@@ -5,6 +5,7 @@
 #include "Transform2D.h"
 #include "Bullet.h"
 #include "Engine.h"
+#include "CircleCollider.h"
 #include <iostream>
 
 void Player::start()
@@ -15,8 +16,6 @@ void Player::start()
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png")));
-
-
 
 	//Set spawn point
 	//Set move speed
@@ -44,4 +43,10 @@ void Player::update(float deltaTime)
 
 	//Set the players velocity 
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
+}
+
+void Player::draw()
+{
+	Actor::draw();
+	getCollider()->draw();
 }

@@ -1,6 +1,7 @@
 #include "Actor.h"
 class SpriteComponent;
 class MoveComponent;
+class CircleCollider;
 
 class Enemy :
 	public Actor
@@ -29,6 +30,7 @@ public:
 	bool GetIsAlive() { return m_isAlive; }
 
 	void start() override;
+	void draw() override;
 
 protected:
 	//Set the get functions of getting/setting the sprite and move components value to "protected" to avoid other 
@@ -62,6 +64,7 @@ private:
 	float m_health;
 	float m_maxhealth;
 	bool m_isAlive;
+	CircleCollider* m_enemyCollider;
 	SpriteComponent* m_spriteComponent;
 	MoveComponent* m_moveComponent;
 };
