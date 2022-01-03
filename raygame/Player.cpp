@@ -3,6 +3,7 @@
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
 #include "Transform2D.h"
+#include <iostream>
 
 void Player::start()
 {

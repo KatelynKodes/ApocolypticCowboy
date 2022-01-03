@@ -2,5 +2,5 @@
 
 MathLibrary::Vector2 FollowComponent::GetIntendedPosition()
 {
-    return m_chasee->getTransform()->getLocalPosition() - getOwner()->getTransform()->getLocalPosition();
+    return m_chasee->getTransform()->getLocalPosition();
 }
