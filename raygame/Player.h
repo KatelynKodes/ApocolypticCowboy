@@ -12,6 +12,7 @@ public:
 	void start() override;
 	void draw() override;
 	void update(float deltaTime) override;
+	void onCollision(Actor* other) override;
 
 private:
 	InputComponent* m_inputComponent;

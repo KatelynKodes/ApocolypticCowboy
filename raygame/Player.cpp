@@ -50,3 +50,9 @@ void Player::draw()
 	Actor::draw();
 	getCollider()->draw();
 }
+
+void Player::onCollision(Actor* other)
+{
+	if (other->getName() == "enemy")
+		Engine::destroy(other);
+}

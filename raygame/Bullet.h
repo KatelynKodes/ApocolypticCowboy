@@ -3,6 +3,7 @@
 #include <Vector2.h>
 class MoveComponent;
 class SpriteComponent;
+class CircleCollider;
 
 class Bullet :
 	public Actor
@@ -12,11 +13,14 @@ public:
 
 	void start() override;
 
+	void draw() override;
+
 	void update(float deltaTime) override;
 
 private:
 	Actor* m_owner;
 	float m_bulletSpeed;
+	CircleCollider* m_bulletCollider;
 	MathLibrary::Vector2 m_bulletDirection;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;

@@ -2,6 +2,7 @@
 #include "MoveComponent.h";
 #include "FollowComponent.h"
 #include "SpriteComponent.h"
+#include "Engine.h"
 #include <iostream>
 
 FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float enemySpeed, Actor* chasee) : Enemy::Enemy(x,y, name, health)
@@ -29,7 +30,8 @@ void FollowEnemy::update(float deltaTime)
 
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();;
 
-	
+	if (GetHealth() <= 0)
+		Engine::destroy(this);
 
 	//If the velocity is greater than 0...
 	if (m_moveComponent->getVelocity().getMagnitude() > 0)

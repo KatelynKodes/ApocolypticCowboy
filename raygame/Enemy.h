@@ -31,6 +31,7 @@ public:
 
 	void start() override;
 	void draw() override;
+	void onCollision(Actor* other) override;
 
 protected:
 	//Set the get functions of getting/setting the sprite and move components value to "protected" to avoid other 

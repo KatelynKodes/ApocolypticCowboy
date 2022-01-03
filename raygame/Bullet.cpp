@@ -1,12 +1,16 @@
 #include "Bullet.h"
 #include "MoveComponent.h";
 #include "SpriteComponent.h";
+#include "CircleCollider.h"
 
 Bullet::Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name) : Actor::Actor(x, y, name)
 {
 	m_owner = owner;
 	m_bulletSpeed = speed;
 	m_bulletDirection = direction;
+
+	m_bulletCollider = new CircleCollider(7, this);
+	setCollider(m_bulletCollider);
 }
 
 void Bullet::start()
@@ -25,5 +29,13 @@ void Bullet::update(float deltaTime)
 
 	Actor::update(deltaTime);
 }
+
+void Bullet::draw()
+{
+	Actor::draw();
+	getCollider()->draw();
+}
+
+
 
 
