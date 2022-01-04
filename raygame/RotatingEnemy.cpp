@@ -16,5 +16,5 @@ void RotatingEnemy::start()
 void RotatingEnemy::update(float deltaTime)
 {
 	getTransform()->rotate(PI * deltaTime);
-	Actor::update(deltaTime);
+	Enemy::update(deltaTime);
 }

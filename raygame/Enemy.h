@@ -1,5 +1,8 @@
 #pragma once
 #include "Actor.h"
+
+class UIText;
+class HealthComponent;
 class SpriteComponent;
 class MoveComponent;
 
@@ -31,6 +34,14 @@ public:
 
 	virtual void start() override;
 
+
+	
+	/// <summary>
+	/// Sets the health text to be a certain UI Text
+	/// </summary>
+	/// <param name="text"></param>
+	void setHealthText(UIText* text) { m_healthText = text; }
+
 protected:
 	//Set the get functions of getting/setting the sprite and move components value to "protected" to avoid other 
 	//classes aside from those that inherit from enemy can get/set the values of them.
@@ -59,10 +70,18 @@ protected:
 	/// <param name="value">The value to set the MoveComponent value to</param>
 	void setMoveComponent(MoveComponent* value) { m_moveComponent = value; }
 
+	/// <summary>
+	/// Sets the healthcomponent
+	/// </summary>
+	/// <param name="value"></param>
+	void setHealthComponent(HealthComponent* value) { m_healthComponent = value; }
+
 private:
 	float m_health;
 	float m_maxhealth;
 	bool m_isAlive;
 	SpriteComponent* m_spriteComponent;
 	MoveComponent* m_moveComponent;
+	UIText* m_healthText;
+	HealthComponent* m_healthComponent;
 };

@@ -11,9 +11,12 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 
 void FollowEnemy::start()
 {
+	//Sprite and movement component
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png"))));
-	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
+	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(m_enemySpeed);
+
+	//FollowComponent
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
 	m_followComponent->setChasee(m_chasee);
 
@@ -22,7 +25,7 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
-	Actor::update(deltaTime);
+	Enemy::update(deltaTime);
 
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();
 
