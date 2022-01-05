@@ -27,6 +27,8 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
-	m_healthText->getTransform()->setLocalPosition(getTransform()->getLocalPosition());
+	MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
+		(getTransform()->getLocalPosition().y - 50) };
+	m_healthText->getTransform()->setLocalPosition(HealthTextPos);
 	Actor::update(deltaTime);
 }

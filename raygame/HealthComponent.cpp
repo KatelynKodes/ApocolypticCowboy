@@ -6,11 +6,8 @@ void HealthComponent::update(float deltaTime)
 {
 	
 	const char* currHealthText = new char[20]{""};
-	const char* slash = "/";
 
-	sprintf_s((char*)currHealthText, sizeof(char) * 20, "%u", m_currHealth);
-	strcat_s((char*)currHealthText, sizeof(char) * 20, slash);
-	sprintf_s((char*)currHealthText, sizeof(char) * 20, "%u", m_maxHealth);
+	sprintf_s((char*)currHealthText, sizeof(char) * 20, "%d", (int)m_currHealth);
 
 	m_healthText->setText(currHealthText);
 }
