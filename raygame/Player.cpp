@@ -41,7 +41,7 @@ void Player::update(float deltaTime)
 
 	m_startTime = clock();
 
-	if (m_startTime - m_currentTime > 10000)
+	if (m_startTime - m_currentTime > 15000)
 	{
 		float randomX = rand() % 900 + 50;
 		float randomY = rand() % 700 + 50;

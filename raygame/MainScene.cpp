@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "FollowEnemy.h"
 #include "CircleCollider.h"
+#include "AABBCollider.h"
 #include "RotatingEnemy.h"
 
 void MainScene::start()
@@ -25,9 +26,15 @@ void MainScene::start()
 	RotatingEnemy* spinningEnemy3 = new RotatingEnemy(600, 700, "enemy", 30);
 	spinningEnemy3->getTransform()->setScale({ 50,50 });
 
+	Actor* wall1 = new Actor(100, 100, "wall");
+	wall1->getTransform()->setScale({ 100, 100 });
+	AABBCollider* wall1Collider = new AABBCollider(wall1);
+	wall1->setCollider(wall1Collider);
+
 	addActor(player);
 	addActor(enemy);
 	addActor(spinningEnemy);
 	addActor(spinningEnemy2);
 	addActor(spinningEnemy3);
+	addActor(wall1);
 }
