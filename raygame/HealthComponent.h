@@ -9,13 +9,20 @@ public:
     void update(float deltaTime) override;
     void draw() override;
 
-    void setMinHealth(float value) { m_currHealth = value; }
-    void setMaxHealth(float value) { m_maxHealth = value; }
+    /// <summary>
+    /// Sets the current helth of the health component 
+    /// </summary>
+    /// <param name="value"> the value to set the float to</param>
+    void setCurrHealth(float value) { m_currHealth = value; }
+
+    /// <summary>
+    /// Sets the UItext used to display the health of the enemy
+    /// </summary>
+    /// <param name="value"></param>
     void setUIText(UIText* text) { m_healthText = text; }
 
 private:
     float m_currHealth;
-    float m_maxHealth;
     UIText* m_healthText;
 };
 

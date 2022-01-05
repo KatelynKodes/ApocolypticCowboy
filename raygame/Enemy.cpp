@@ -19,8 +19,7 @@ void Enemy::start()
 	//Health Component
 	setHealthComponent(dynamic_cast<HealthComponent*>(addComponent(new HealthComponent())));
 	m_healthComponent->setUIText(m_healthText);
-	m_healthComponent->setMinHealth(m_health);
-	m_healthComponent->setMaxHealth(m_maxhealth);
+	m_healthComponent->setCurrHealth(m_health);
 	//Call base start method
 	Actor::start();
 }

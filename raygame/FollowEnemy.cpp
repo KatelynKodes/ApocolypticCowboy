@@ -25,7 +25,7 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
-
+	//Get the move direction by subtracting the follow enemies position by the direction of the chasee
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();
 
 	
@@ -34,6 +34,7 @@ void FollowEnemy::update(float deltaTime)
 		//...Rotate the enemy
 		getTransform()->setForward(m_moveComponent->getVelocity());
 
+	//Use the moveComponent to move the follow enemy towards the player
 	m_moveComponent->setVelocity(moveDir.getNormalized() * m_enemySpeed);
 
 	Enemy::update(deltaTime);
