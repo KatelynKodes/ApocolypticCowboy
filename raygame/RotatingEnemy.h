@@ -10,5 +10,7 @@ public:
 
 private:
 	float m_rotationSpeed;
+	float m_currentTime;
+	float m_startTime;
 };
 
