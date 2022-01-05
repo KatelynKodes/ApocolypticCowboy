@@ -40,8 +40,11 @@ void Enemy::onCollision(Actor* other)
 		m_health -= 5;
 		Engine::destroy(other);
 	}
-		
-		
+	if (other->getName() == "PlayerUpgradedBullet")
+	{
+		m_health -= 10;
+		Engine::destroy(other);
+	}
 }
 
 

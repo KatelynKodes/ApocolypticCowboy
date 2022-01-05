@@ -71,12 +71,6 @@
     <ClCompile Include="Collider.cpp">
       <Filter>Colliders</Filter>
     </ClCompile>
-    <ClCompile Include="FollowComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="InputComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -86,11 +80,17 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
+    <ClCompile Include="FollowComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
     <ClCompile Include="RotatingEnemy.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Actors</Filter>
     </ClCompile>
     <ClCompile Include="FollowComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerups.cpp">
+      <Filter>Actors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,12 +142,6 @@
     <ClInclude Include="Collider.h">
       <Filter>Colliders</Filter>
     </ClInclude>
-    <ClInclude Include="FollowComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -160,11 +154,17 @@
     <ClInclude Include="Bullet.h">
       <Filter>Actors</Filter>
     </ClInclude>
+    <ClInclude Include="FollowComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="RotatingEnemy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="FollowComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerups.h">
+      <Filter>Actors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,6 +6,9 @@
 #include "Bullet.h"
 #include "Engine.h"
 #include "CircleCollider.h"
+#include "Powerups.h"
+#include <stdlib.h> 
+#include <ctime>
 #include <iostream>
 
 void Player::start()
@@ -16,6 +19,10 @@ void Player::start()
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png")));
+
+	m_powerupStatus = false;
+
+	m_currentTime = 0;
 
 	//Set spawn point
 	//Set move speed
@@ -32,15 +39,37 @@ void Player::update(float deltaTime)
 		m_health = 20;
 	}
 
+	m_startTime = clock();
+
+	if (m_startTime - m_currentTime > 10000)
+	{
+		float randomX = rand() % 900 + 50;
+		float randomY = rand() % 700 + 50;
+		Powerups* powerup = new Powerups(randomX, randomY, "powerup");
+		Scene* currentScene = Engine::getCurrentScene();
+		powerup->getTransform()->setScale({ 50, 50 });
+		currentScene->addActor(powerup);
+
+		m_currentTime = m_startTime;
+	}
+
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
-	if (m_inputComponent->getSpacePress()) 
+	if (m_inputComponent->getSpacePress() && m_powerupStatus == true) 
+	{
+		Scene* currentScene = Engine::getCurrentScene();
+		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "PlayerUpgradedBullet");
+		bullet->getTransform()->setScale({ 200, 200 });
+		CircleCollider* m_bulletCollider = new CircleCollider(30, bullet);
+		bullet->setCollider(m_bulletCollider);
+		currentScene->addActor(bullet);
+	}
+	else if (m_inputComponent->getSpacePress())
 	{
 		Scene* currentScene = Engine::getCurrentScene();
 		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "PlayerBullet");
 		bullet->getTransform()->setScale({ 50, 50 });
 		currentScene->addActor(bullet);
-		std::cout << bullet->getName() << std::endl;
 	}
 
 	//If the velocity is greater than 0...
@@ -69,6 +98,11 @@ void Player::onCollision(Actor* other)
 	{
 		Engine::destroy(other);
 		m_health -= 5;
+	}
+	if (other->getName() == "powerup")
+	{
+		Engine::destroy(other);
+		m_powerupStatus = true;
 	}
 		
 }

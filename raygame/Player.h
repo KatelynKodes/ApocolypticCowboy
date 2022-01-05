@@ -16,6 +16,9 @@ public:
 
 private:
 	float m_health;
+	bool m_powerupStatus;
+	float m_startTime;
+	float m_currentTime;
 	InputComponent* m_inputComponent;
 	MoveComponent* m_moveComponent;
 	SpriteComponent* m_spriteComponent;
