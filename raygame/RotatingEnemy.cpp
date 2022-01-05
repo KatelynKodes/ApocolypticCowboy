@@ -15,7 +15,7 @@ void RotatingEnemy::start()
 {
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png"))));
 	Enemy::start();
-	
+
 	m_currentTime = 0;
 }
 
@@ -25,7 +25,7 @@ void RotatingEnemy::update(float deltaTime)
 
 	m_startTime = clock();
 
-	float timeBetweenShots = rand() % 1500 + 800;
+	float timeBetweenShots = rand() % 2500 + 800;
 
 	if (m_startTime - m_currentTime > timeBetweenShots)
 	{

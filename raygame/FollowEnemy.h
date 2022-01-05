@@ -15,5 +15,7 @@ private:
 	FollowComponent* m_followComponent;
 	MoveComponent* m_moveComponent;
 	float m_enemySpeed;
+	float m_currentTime;
+	float m_startTime;
 };
 
