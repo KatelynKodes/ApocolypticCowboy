@@ -2,6 +2,7 @@
 #include "MoveComponent.h";
 #include "FollowComponent.h"
 #include "SpriteComponent.h"
+#include "Engine.h"
 #include <iostream>
 
 FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float enemySpeed, Actor* chasee) : Enemy::Enemy(x,y, name, health)
@@ -18,7 +19,7 @@ void FollowEnemy::start()
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
 	m_followComponent->setChasee(m_chasee);
 
-	Actor::start();
+	Enemy::start();
 }
 
 void FollowEnemy::update(float deltaTime)
@@ -38,6 +39,5 @@ void FollowEnemy::update(float deltaTime)
 	m_moveComponent->setVelocity(moveDir.getNormalized() * m_enemySpeed);
 }
 
-#include "Engine.h"
-#include <iostream>
-	Enemy::start();
+
+	
