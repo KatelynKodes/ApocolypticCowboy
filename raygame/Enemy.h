@@ -27,14 +27,19 @@ public:
 	float GetHealth() { return m_health; }
 
 	/// <summary>
+	/// Gets the value of the enemies maximum health
+	/// </summary>
+	/// <returns> the value of the m_maxealth value </returns>
+	float GetMaxHealth() { return m_maxhealth; }
+
+	/// <summary>
 	/// Gets the value of m_isAlive to determine if the enemy is alive
 	/// </summary>
 	/// <returns> The m_isAlive value </returns>
 	bool GetIsAlive() { return m_isAlive; }
 
 	virtual void start() override;
-
-
+	virtual void update(float deltaTime) override;
 	
 	/// <summary>
 	/// Sets the health text to be a certain UI Text

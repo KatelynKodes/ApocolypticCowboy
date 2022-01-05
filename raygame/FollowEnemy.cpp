@@ -25,7 +25,6 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
-	Enemy::update(deltaTime);
 
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();
 
@@ -36,4 +35,6 @@ void FollowEnemy::update(float deltaTime)
 		getTransform()->setForward(m_moveComponent->getVelocity());
 
 	m_moveComponent->setVelocity(moveDir.getNormalized() * m_enemySpeed);
+
+	Enemy::update(deltaTime);
 }
