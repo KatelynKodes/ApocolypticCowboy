@@ -1,3 +1,4 @@
+#pragma once
 #include "Actor.h"
 class SpriteComponent;
 class MoveComponent;

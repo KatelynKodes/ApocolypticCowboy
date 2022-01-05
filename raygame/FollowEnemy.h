@@ -1,4 +1,5 @@
 #include "Enemy.h"
+
 class FollowComponent;
 
 class FollowEnemy :
