@@ -9,7 +9,7 @@
 
 void MainScene::start()
 {
-	Player* player = new Player(200, 200, "Player");
+	Player* player = new Player(20, 200, 200, "Player");
 	player->getTransform()->setScale({ 50, 50 });
 	CircleCollider* playerCollider = new CircleCollider(25, player);
 	player->setCollider(playerCollider);
@@ -18,11 +18,11 @@ void MainScene::start()
 	enemy->getTransform()->setScale({ 50, 50 });
 
 
-	RotatingEnemy* spinningEnemy = new RotatingEnemy(500, 200, "Spinny boi", 30);
+	RotatingEnemy* spinningEnemy = new RotatingEnemy(500, 200, "enemy", 30);
 	spinningEnemy->getTransform()->setScale({50,50});
-	RotatingEnemy* spinningEnemy2 = new RotatingEnemy(400, 200, "Spinny boi2", 30);
+	RotatingEnemy* spinningEnemy2 = new RotatingEnemy(400, 200, "enemy", 30);
 	spinningEnemy2->getTransform()->setScale({ 50,50 });
-	RotatingEnemy* spinningEnemy3 = new RotatingEnemy(600, 700, "Spinnyboi3", 30);
+	RotatingEnemy* spinningEnemy3 = new RotatingEnemy(600, 700, "enemy", 30);
 	spinningEnemy3->getTransform()->setScale({ 50,50 });
 
 	addActor(player);

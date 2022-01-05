@@ -26,14 +26,21 @@ void Player::update(float deltaTime)
 {
 	Actor::update(deltaTime);
 
+	if (m_health <= 0)
+	{
+		getTransform()->setLocalPosition({ 10, 10 });
+		m_health = 20;
+	}
+
 	MathLibrary::Vector2 moveDirection = m_inputComponent->getMoveAxis();
 
 	if (m_inputComponent->getSpacePress()) 
 	{
 		Scene* currentScene = Engine::getCurrentScene();
-		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y);
+		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "PlayerBullet");
 		bullet->getTransform()->setScale({ 50, 50 });
 		currentScene->addActor(bullet);
+		std::cout << bullet->getName() << std::endl;
 	}
 
 	//If the velocity is greater than 0...
@@ -54,5 +61,14 @@ void Player::draw()
 void Player::onCollision(Actor* other)
 {
 	if (other->getName() == "enemy")
+	{
 		Engine::destroy(other);
+		m_health -= 5;
+	}
+	if (other->getName() == "EnemyBullet")
+	{
+		Engine::destroy(other);
+		m_health -= 5;
+	}
+		
 }

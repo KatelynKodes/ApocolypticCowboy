@@ -35,7 +35,7 @@ void Enemy::draw()
 
 void Enemy::onCollision(Actor* other)
 {
-	if (other->getName() == "Bullet") 
+	if (other->getName() == "PlayerBullet") 
 	{
 		m_health -= 5;
 		Engine::destroy(other);
