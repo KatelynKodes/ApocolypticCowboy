@@ -12,9 +12,9 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 void FollowEnemy::start()
 {
 	//Sprite and movement component
-	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png"))));
-	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
-	m_moveComponent->setMaxSpeed(m_enemySpeed);
+	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/followEnemy.png"))));
+	setMoveComponent(dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
+	getMoveComponent()->setMaxSpeed(m_enemySpeed);
 
 	//FollowComponent
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
@@ -30,12 +30,12 @@ void FollowEnemy::update(float deltaTime)
 
 	
 	//If the velocity is greater than 0...
-	if (m_moveComponent->getVelocity().getMagnitude() > 0)
+	if (getMoveComponent()->getVelocity().getMagnitude() > 0)
 		//...Rotate the enemy
-		getTransform()->setForward(m_moveComponent->getVelocity());
+		getTransform()->setForward(getMoveComponent()->getVelocity());
 
 	//Use the moveComponent to move the follow enemy towards the player
-	m_moveComponent->setVelocity(moveDir.getNormalized() * m_enemySpeed);
+	getMoveComponent()->setVelocity(moveDir.getNormalized() * m_enemySpeed);
 
 	Enemy::update(deltaTime);
 }

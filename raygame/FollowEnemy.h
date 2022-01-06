@@ -16,7 +16,6 @@ public:
 private:
 	Actor* m_chasee;
 	FollowComponent* m_followComponent;
-	MoveComponent* m_moveComponent;
 	float m_enemySpeed;
 };
 

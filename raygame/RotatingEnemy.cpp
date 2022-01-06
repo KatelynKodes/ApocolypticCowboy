@@ -5,7 +5,7 @@
 
 void RotatingEnemy::start()
 {
-	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png"))));
+	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/canon.png"))));
 	Enemy::start();
 }
 

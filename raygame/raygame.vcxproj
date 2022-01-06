@@ -161,6 +161,7 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="MimicEnemy.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RotatingEnemy.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="MainScene.h" />
+    <ClInclude Include="MimicEnemy.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RotatingEnemy.h" />
