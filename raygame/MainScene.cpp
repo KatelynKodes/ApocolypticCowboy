@@ -14,7 +14,7 @@ void MainScene::start()
 	UIText* Instructions = new UIText(0, 0, "Instructions", "Press WASD to move, press SPACE to shoot", (float)1000, (float)50, (float)25, "resources/fonts/jupiter_crash.png", BLACK, WHITE);
 
 	//Player
-	Player* player = new Player(400, 500, "Player");
+	Player* player = new Player(200, 500, "Player");
 	player->getTransform()->setScale({ 50, 50 });
 
 	//The following Enemy
@@ -43,8 +43,10 @@ void MainScene::start()
 	spinningEnemy3->setHealthText(spinningEnemyHealth3);
 
 	//Mimic
-	MimicEnemy* mimicEnemy = new MimicEnemy(800, 500, "Mimic", 30);
+	MimicEnemy* mimicEnemy = new MimicEnemy(800, 500, "Mimic", 25);
+	UIText* mimicHealth = new UIText(0, 0, "mimic health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	mimicEnemy->getTransform()->setScale({ 50,50 });
+	mimicEnemy->setHealthText(mimicHealth);
 
 	//Adding the actors to the scene
 	addActor(Instructions);

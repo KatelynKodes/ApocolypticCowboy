@@ -10,7 +10,8 @@ void MimicEnemy::start()
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	setMoveComponent(dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
 	getMoveComponent()->setMaxSpeed(10);
-
+	
+	Enemy::start();
 }
 
 void MimicEnemy::update(float deltaTime)
