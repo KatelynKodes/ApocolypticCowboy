@@ -10,6 +10,9 @@ public:
 
 	InputComponent(const char* name = "InputComponent") : Component::Component(name) {}
 
+	/// <summary>
+	/// Gets the axis values that are used to move depending on the input being given by the player
+	/// </summary>
 	MathLibrary::Vector2 getMoveAxis();
 
 private:
