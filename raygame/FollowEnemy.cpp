@@ -15,7 +15,10 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 
 void FollowEnemy::start()
 {
-	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/enemy.png"))));
+	//Sprite and movement component
+	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/followEnemy.png"))));
+
+	//FollowComponent
 	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
 	m_moveComponent->setMaxSpeed(m_enemySpeed);
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
@@ -28,8 +31,7 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
-	Actor::update(deltaTime);
-
+	//Get the move direction by subtracting the follow enemies position by the direction of the chasee
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();
 
 	m_startTime = clock();
@@ -49,11 +51,14 @@ void FollowEnemy::update(float deltaTime)
 		Engine::destroy(this);
 
 	//If the velocity is greater than 0...
-	if (m_moveComponent->getVelocity().getMagnitude() > 0)
+	if (getMoveComponent()->getVelocity().getMagnitude() > 0)
 		//...Rotate the enemy
-		getTransform()->setForward(m_moveComponent->getVelocity());
+		getTransform()->setForward(getMoveComponent()->getVelocity());
 
-	m_moveComponent->setVelocity(moveDir.getNormalized() * m_enemySpeed);
+	//Use the moveComponent to move the follow enemy towards the player
+	getMoveComponent()->setVelocity(moveDir.getNormalized() * m_enemySpeed);
+
+	Enemy::update(deltaTime);
 }
 
 
