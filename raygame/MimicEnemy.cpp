@@ -3,6 +3,7 @@
 #include "SpriteComponent.h"
 #include "InputComponent.h"
 #include "Transform2D.h"
+#include "Engine.h"
 
 void MimicEnemy::start()
 {
@@ -16,17 +17,22 @@ void MimicEnemy::start()
 
 void MimicEnemy::update(float deltaTime)
 {
-	
+	if (GetIsAlive())
+	{
+		MathLibrary::Vector2 moveDir = m_inputComponent->getReverseMoveAxis();
 
-	MathLibrary::Vector2 moveDir= m_inputComponent->getReverseMoveAxis();
+		//If the velocity is greater than 0...
+		if (getMoveComponent()->getVelocity().getMagnitude() > 0)
+			//...Rotate the player
+			getTransform()->setForward(getMoveComponent()->getVelocity());
 
-	//If the velocity is greater than 0...
-	if (getMoveComponent()->getVelocity().getMagnitude() > 0)
-		//...Rotate the player
-		getTransform()->setForward(getMoveComponent()->getVelocity());
-
-	//Set the players velocity 
-	getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
+		//Set the players velocity 
+		getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
+	}
+	else
+	{
+		Engine::destroy(this);
+	}
 
 	Enemy::update(deltaTime);
 }

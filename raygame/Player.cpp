@@ -12,11 +12,6 @@
 #include <ctime>
 #include <iostream>
 
-Player::Player(float x, float y, const char* name, float health) : Actor::Actor(x, y, name)
-{
-	m_playerHealth = health;
-}
-
 void Player::start()
 {
 	Actor::start();
@@ -31,7 +26,7 @@ void Player::start()
 	m_currentTime = 0;
 	//Health Component
 	m_healthComponent = dynamic_cast<HealthComponent*>(addComponent(new HealthComponent()));
-	m_healthComponent->setCurrHealth(m_playerHealth);
+	m_healthComponent->setCurrHealth(m_health);
 	m_healthComponent->setUIText(m_playerHealthText);
 }
 
@@ -86,11 +81,15 @@ void Player::update(float deltaTime)
 	//Set the players velocity 
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
 
+
+	//Sets the current health to the players current health
+	m_healthComponent->setCurrHealth(m_health);
+
+
 	//Set the health text to always be following the player
 	MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
 		(getTransform()->getLocalPosition().y - 50) };
 	m_playerHealthText->getTransform()->setLocalPosition(HealthTextPos);
-
 	
 }
 

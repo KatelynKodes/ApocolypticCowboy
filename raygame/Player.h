@@ -11,19 +11,25 @@ class Player :
 {
 public:
 	Player(float health, float x, float y, const char* name) : Actor(x, y, name) { m_health = health; }
+
 	/// <summary>
 	/// Returns the value of the players health
 	/// </summary>
 	/// <returns> m_playerHealth </returns>
-	float getHealth() { return m_playerHealth; }
+	float getHealth() { return m_health; }
+
 	/// <summary>
 	/// Sets the health text to be a certain UI Text
 	/// </summary>
 	/// <param name="text"></param>
 	void setPlayerHealthText(UIText* text) { m_playerHealthText = text; }
+
+	//Start, draw and update
 	void start() override;
 	void draw() override;
 	void update(float deltaTime) override;
+
+
 	void onCollision(Actor* other) override;
 
 private:

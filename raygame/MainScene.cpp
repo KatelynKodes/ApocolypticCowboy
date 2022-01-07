@@ -16,8 +16,12 @@ void MainScene::start()
 	UIText* Instructions = new UIText(0, 0, "Instructions", "Press WASD to move, press SPACE to shoot", (float)1000, (float)50, (float)25, "resources/fonts/jupiter_crash.png", BLACK, WHITE);
 
 	//Player
-	Player* player = new Player(200, 500, "Player");
+	Player* player = new Player(20, 200, 200, "Player");
+	UIText* playerHealthText = new UIText(20, 19, "Player Health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	player->getTransform()->setScale({ 50, 50 });
+	player->setPlayerHealthText(playerHealthText);
+	CircleCollider* playerCollider = new CircleCollider(25, player);
+	player->setCollider(playerCollider);
 
 
 	//The following Enemy
@@ -69,8 +73,6 @@ void MainScene::draw()
 	Scene::draw();
 }
 
-	Player* player = new Player(20, 200, 200, "Player");
-	UIText* playerHealthText = new UIText(20, 19, "Player Health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
-	player->setPlayerHealthText(playerHealthText);
-	CircleCollider* playerCollider = new CircleCollider(25, player);
-	player->setCollider(playerCollider);
+	
+	
+	
