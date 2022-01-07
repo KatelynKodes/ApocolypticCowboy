@@ -104,5 +104,9 @@ void Player::onCollision(Actor* other)
 		Engine::destroy(other);
 		m_powerupStatus = true;
 	}
+	if (other->getName() == "wall")
+	{
+		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
+	}
 		
 }

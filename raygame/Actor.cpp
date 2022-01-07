@@ -187,6 +187,7 @@ void Actor::draw()
     for (int i = 0; i < m_componentCount; i++)
         m_components[i]->draw();
 
+    getCollider()->draw();
 }
 
 void Actor::end()

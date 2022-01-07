@@ -47,6 +47,14 @@ void Bullet::draw()
 	getCollider()->draw();
 }
 
+void Bullet::onCollision(Actor* other)
+{
+	if (other->getName() == "wall")
+	{
+		Engine::destroy(this);
+	}
+}
+
 
 
 

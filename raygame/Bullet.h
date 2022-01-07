@@ -17,6 +17,8 @@ public:
 
 	void update(float deltaTime) override;
 
+	void onCollision(Actor* other) override;
+
 private:
 	Actor* m_owner;
 	float m_bulletSpeed;
