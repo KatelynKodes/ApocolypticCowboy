@@ -17,5 +17,7 @@ private:
 	Actor* m_chasee;
 	FollowComponent* m_followComponent;
 	float m_enemySpeed;
+	float m_currentTime;
+	float m_startTime;
 };
 

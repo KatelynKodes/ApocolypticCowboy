@@ -2,6 +2,10 @@
 #include "MoveComponent.h";
 #include "FollowComponent.h"
 #include "SpriteComponent.h"
+#include "Engine.h"
+#include "Bullet.h"
+#include <iostream>
+#include <ctime>
 
 FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float enemySpeed, Actor* chasee) : Enemy::Enemy(x,y, name, health)
 {
@@ -13,12 +17,14 @@ void FollowEnemy::start()
 {
 	//Sprite and movement component
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/followEnemy.png"))));
-	setMoveComponent(dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
-	getMoveComponent()->setMaxSpeed(m_enemySpeed);
 
 	//FollowComponent
+	setMoveComponent(dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
+	getMoveComponent()->setMaxSpeed(m_enemySpeed);
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
 	m_followComponent->setChasee(m_chasee);
+
+	m_currentTime = 0;
 
 	Enemy::start();
 }
@@ -28,7 +34,22 @@ void FollowEnemy::update(float deltaTime)
 	//Get the move direction by subtracting the follow enemies position by the direction of the chasee
 	MathLibrary::Vector2 moveDir =  m_followComponent->GetIntendedPosition() - getTransform()->getLocalPosition();
 
-	
+	m_startTime = clock();
+
+
+	if (m_startTime - m_currentTime > 1000)
+	{
+		Scene* currentScene = Engine::getCurrentScene();
+		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "EnemyBullet");
+		bullet->getTransform()->setScale({ 50, 50 });
+		currentScene->addActor(bullet);
+
+		m_currentTime = m_startTime;
+	}
+
+	if (GetHealth() <= 0)
+		Engine::destroy(this);
+
 	//If the velocity is greater than 0...
 	if (getMoveComponent()->getVelocity().getMagnitude() > 0)
 		//...Rotate the enemy
@@ -39,3 +60,6 @@ void FollowEnemy::update(float deltaTime)
 
 	Enemy::update(deltaTime);
 }
+
+
+	

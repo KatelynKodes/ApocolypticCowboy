@@ -15,6 +15,8 @@ public:
 	/// </summary>
 	MathLibrary::Vector2 getMoveAxis();
 
+	bool getSpacePress() { return RAYLIB_H::IsKeyPressed(m_action1Key); }
+
 	/// <summary>
 	/// Gets the reverse axis values that are used to move depending on the input given by the player
 	/// </summary>

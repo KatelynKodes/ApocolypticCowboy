@@ -3,6 +3,7 @@
 #include <Vector2.h>
 #include "Actor.h"
 #include "Transform2D.h"
+#include "raylib.h"
 
 CircleCollider::CircleCollider(Actor* owner) : Collider::Collider(owner, ColliderType::CIRCLE)
 {
@@ -39,10 +40,15 @@ bool CircleCollider::checkCollisionAABB(AABBCollider* otherCollider)
     MathLibrary::Vector2 direction = getOwner()->getTransform()->getWorldPosition() - otherCollider->getOwner()->getTransform()->getWorldPosition();
 
     //Clamp the direction vector to be within the bounds of the AABB
-    direction.x = direction.x < -otherCollider->getWidth() / 2 ? -otherCollider->getWidth() : direction.x;
-    direction.x = direction.x > otherCollider->getWidth() / 2 ? otherCollider->getWidth() : direction.x;
-    direction.y = direction.y < -otherCollider->getHeight() / 2 ? -otherCollider->getHeight() : direction.y;
-    direction.y = direction.y > otherCollider->getHeight() / 2 ? otherCollider->getHeight() : direction.y;
+    if (direction.x < -otherCollider->getWidth() / 2)
+        direction.x = -otherCollider->getWidth() / 2;
+    else if (direction.x > otherCollider->getWidth() / 2)
+        direction.x = otherCollider->getWidth() / 2;
+
+    if (direction.y < -otherCollider->getHeight() / 2)
+        direction.y = -otherCollider->getHeight() / 2;
+    else if (direction.y > otherCollider->getHeight() / 2)
+        direction.y = otherCollider->getHeight() / 2;
 
     //Add the direction vector to the AABB center to get the closest point to the circle
     MathLibrary::Vector2 closestPoint = otherCollider->getOwner()->getTransform()->getWorldPosition() + direction;
@@ -55,4 +61,9 @@ bool CircleCollider::checkCollisionAABB(AABBCollider* otherCollider)
         return true;
 
     return false;
+}
+
+void CircleCollider::draw()
+{
+    RAYLIB_H::DrawCircleLines((int)getOwner()->getTransform()->getLocalPosition().x, (int)getOwner()->getTransform()->getLocalPosition().y, m_collisionRadius, WHITE);
 }

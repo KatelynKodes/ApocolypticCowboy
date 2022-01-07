@@ -16,3 +16,4 @@ MathLibrary::Vector2 InputComponent::getReverseMoveAxis()
 	float moveDirectionY = RAYLIB_H::IsKeyDown(RAYLIB_H::KEY_W) + (-RAYLIB_H::IsKeyDown(RAYLIB_H::KEY_S));
 	return MathLibrary::Vector2(moveDirectionX, moveDirectionY);
 }
+

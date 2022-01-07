@@ -92,11 +92,22 @@
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>Source Files\ComponentScource</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingEnemy.cpp">
+      <Filter>Actors</Filter>
     <ClCompile Include="MainScene.cpp">
       <Filter>Source Files\SceneSource</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files\SceneSource</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerups.cpp">
+      <Filter>Actors</Filter>
     </ClCompile>
     <ClCompile Include="AABBCollider.cpp">
       <Filter>Source Files\ColliderScource</Filter>
@@ -172,11 +183,22 @@
     <ClInclude Include="SpriteComponent.h">
       <Filter>Header Files\ComponentHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingEnemy.h">
+      <Filter>Actors</Filter>
     <ClInclude Include="Scene.h">
       <Filter>Header Files\SceneHeaders</Filter>
     </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>Header Files\SceneHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerups.h">
+      <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="AABBCollider.h">
       <Filter>Header Files\ColliderHeaders</Filter>

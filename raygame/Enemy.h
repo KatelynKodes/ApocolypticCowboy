@@ -5,6 +5,7 @@ class UIText;
 class HealthComponent;
 class SpriteComponent;
 class MoveComponent;
+class CircleCollider;
 
 class Enemy :
 	public Actor
@@ -38,7 +39,9 @@ public:
 	/// <returns> The m_isAlive value </returns>
 	bool GetIsAlive() { return m_isAlive; }
 
-	virtual void start() override;
+	void start() override;
+	void draw() override;
+	void onCollision(Actor* other) override;
 	virtual void update(float deltaTime) override;
 	
 	/// <summary>
@@ -85,6 +88,7 @@ private:
 	float m_health;
 	float m_maxhealth;
 	bool m_isAlive;
+	CircleCollider* m_enemyCollider;
 	SpriteComponent* m_spriteComponent;
 	MoveComponent* m_moveComponent;
 	UIText* m_healthText;

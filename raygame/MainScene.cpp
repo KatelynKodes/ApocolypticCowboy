@@ -4,6 +4,8 @@
 #include "Transform2D.h"
 #include "Player.h"
 #include "FollowEnemy.h"
+#include "CircleCollider.h"
+#include "AABBCollider.h"
 #include "RotatingEnemy.h"
 #include "MimicEnemy.h"
 #include "UIText.h"
@@ -14,10 +16,8 @@ void MainScene::start()
 	UIText* Instructions = new UIText(0, 0, "Instructions", "Press WASD to move, press SPACE to shoot", (float)1000, (float)50, (float)25, "resources/fonts/jupiter_crash.png", BLACK, WHITE);
 
 	//Player
-	Player* player = new Player(200, 500, "Player", 25);
-	UIText* playerHealthText = new UIText(20, 19, "Player Health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
+	Player* player = new Player(200, 500, "Player");
 	player->getTransform()->setScale({ 50, 50 });
-	player->setPlayerHealthText(playerHealthText);
 
 
 	//The following Enemy
@@ -68,3 +68,9 @@ void MainScene::draw()
 	ClearBackground(ORANGE);
 	Scene::draw();
 }
+
+	Player* player = new Player(20, 200, 200, "Player");
+	UIText* playerHealthText = new UIText(20, 19, "Player Health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
+	player->setPlayerHealthText(playerHealthText);
+	CircleCollider* playerCollider = new CircleCollider(25, player);
+	player->setCollider(playerCollider);
