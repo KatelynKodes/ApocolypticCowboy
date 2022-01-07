@@ -19,8 +19,8 @@ void FollowEnemy::start()
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/followEnemy.png"))));
 
 	//FollowComponent
-	m_moveComponent = (dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
-	m_moveComponent->setMaxSpeed(m_enemySpeed);
+	setMoveComponent(dynamic_cast<MoveComponent*>(addComponent(new MoveComponent())));
+	getMoveComponent()->setMaxSpeed(m_enemySpeed);
 	m_followComponent = dynamic_cast<FollowComponent*>(addComponent(new FollowComponent()));
 	m_followComponent->setChasee(m_chasee);
 
