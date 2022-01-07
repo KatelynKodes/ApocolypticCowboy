@@ -1,6 +1,4 @@
 #include "MainScene.h"
-#include "SpriteComponent.h"
-#include "MoveComponent.h"
 #include "Transform2D.h"
 #include "Player.h"
 #include "FollowEnemy.h"

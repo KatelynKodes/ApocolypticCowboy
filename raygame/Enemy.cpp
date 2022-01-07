@@ -14,6 +14,12 @@ Enemy::Enemy(float x, float y, const char* name, float health) : Actor:: Actor(x
 
 Enemy::~Enemy()
 {
+	delete m_enemyCollider;
+	delete m_spriteComponent;
+	delete m_moveComponent;
+	delete m_healthText;
+	delete m_healthComponent;
+	Engine::destroy(this);
 }
 
 void Enemy::start()
