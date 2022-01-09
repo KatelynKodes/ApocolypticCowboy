@@ -5,7 +5,7 @@ class RotatingEnemy :
 {
 public:
 	//Constructor
-	RotatingEnemy(float x, float y, const char* name, float health) : Enemy::Enemy(x, y, name, health) {}
+	RotatingEnemy(float x, float y, const char* name, float health);
 
 	//Start and update
 	void start() override;

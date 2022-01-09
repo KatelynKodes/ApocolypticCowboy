@@ -19,6 +19,7 @@ Enemy::~Enemy()
 	delete m_moveComponent;
 	delete m_healthText;
 	delete m_healthComponent;
+	Actor::~Actor();
 }
 
 void Enemy::start()

@@ -7,6 +7,8 @@
 #include <stdlib.h> 
 #include <ctime>
 
+RotatingEnemy::RotatingEnemy(float x, float y, const char* name, float health) : Enemy(x, y, name, health) {};
+
 void RotatingEnemy::start()
 {
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/canon.png"))));
