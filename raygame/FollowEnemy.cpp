@@ -13,6 +13,13 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 	m_chasee = chasee;
 }
 
+FollowEnemy::~FollowEnemy()
+{
+	delete m_chasee;
+	delete m_followComponent;
+	Enemy::~Enemy();
+}
+
 void FollowEnemy::start()
 {
 	//Sprite and movement component
@@ -31,6 +38,8 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
+	Enemy::update(deltaTime);
+
 	if (GetIsAlive())
 	{
 		//Get the move direction by subtracting the follow enemies position by the direction of the chasee
@@ -59,10 +68,9 @@ void FollowEnemy::update(float deltaTime)
 	}
 	else
 	{
+		FollowEnemy::~FollowEnemy();
 		Engine::destroy(this);
 	}
-
-	Enemy::update(deltaTime);
 }
 
 

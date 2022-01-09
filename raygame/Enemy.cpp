@@ -19,7 +19,6 @@ Enemy::~Enemy()
 	delete m_moveComponent;
 	delete m_healthText;
 	delete m_healthComponent;
-	Engine::destroy(this);
 }
 
 void Enemy::start()
