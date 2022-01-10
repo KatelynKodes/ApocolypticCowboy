@@ -3,6 +3,7 @@
 #include "SpriteComponent.h"
 #include "InputComponent.h"
 #include "Transform2D.h"
+#include "Engine.h"
 
 void MimicEnemy::start()
 {
@@ -28,5 +29,10 @@ void MimicEnemy::update(float deltaTime)
 	//Set the players velocity 
 	getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
 
+
+	if (GetHealth() <= 0)
+		Engine::destroy(this);
+
 	Enemy::update(deltaTime);
 }
+
