@@ -59,13 +59,13 @@ void MainScene::start()
 	Actor* rotator = new Actor(.02f, 0, "rotator");
 	child->getTransform()->addChild(rotator->getTransform());
 	rotator->getTransform()->setScale({ 100, 100 });
-	CircleCollider* rotatorCollider = new CircleCollider(20, rotator);
+	CircleCollider* rotatorCollider = new CircleCollider(12, rotator);
 	rotator->setCollider(rotatorCollider);
 
 	Actor* rotator2 = new Actor(-.02f, 0, "rotator");
 	child->getTransform()->addChild(rotator2->getTransform());
 	rotator2->getTransform()->setScale({ 100, 100 });
-	CircleCollider* rotator2Collider = new CircleCollider(20, rotator2);
+	CircleCollider* rotator2Collider = new CircleCollider(12, rotator2);
 	rotator2->setCollider(rotator2Collider);
 
 	Actor* wall = new Actor(300, 100, "house");
