@@ -57,24 +57,39 @@ void MainScene::start()
 	wall->setCollider(wallCollider);
 
 	Actor* wall1 = new Actor(0, 400, "wall");
-	wall1->getTransform()->setScale({ 10, 800 });
-	AABBCollider* wall1Collider = new AABBCollider(10, 800, wall1);
+	wall1->getTransform()->setScale({ 0, 800 });
+	AABBCollider* wall1Collider = new AABBCollider(0, 800, wall1);
 	wall1->setCollider(wall1Collider);
 
 	Actor* wall2 = new Actor(1000, 400, "wall");
-	wall2->getTransform()->setScale({ 10, 800 });
-	AABBCollider* wall2Collider = new AABBCollider(10, 800, wall2);
+	wall2->getTransform()->setScale({ 0, 800 });
+	AABBCollider* wall2Collider = new AABBCollider(0, 800, wall2);
 	wall2->setCollider(wall2Collider);
 
 	Actor* wall3 = new Actor(500, 50, "wall");
-	wall3->getTransform()->setScale({ 1000, 10 });
-	AABBCollider* wall3Collider = new AABBCollider(1000, 10, wall3);
+	wall3->getTransform()->setScale({ 1000, 0 });
+	AABBCollider* wall3Collider = new AABBCollider(1000, 0, wall3);
 	wall3->setCollider(wall3Collider);
 
 	Actor* wall4 = new Actor(500, 800, "wall");
-	wall4->getTransform()->setScale({ 1000, 10 });
-	AABBCollider* wall4Collider = new AABBCollider(1000, 10, wall4);
+	wall4->getTransform()->setScale({ 1000, 0 });
+	AABBCollider* wall4Collider = new AABBCollider(1000, 0, wall4);
 	wall4->setCollider(wall4Collider);
+
+	Actor* wall5 = new Actor(400, 800, "wall");
+	wall5->getTransform()->setScale({ 100, 400 });
+	AABBCollider* wall5Collider = new AABBCollider(200, 400, wall5);
+	wall5->setCollider(wall5Collider);
+
+	Actor* wall6 = new Actor(800, 300, "wall");
+	wall6->getTransform()->setScale({ 100, 50 });
+	AABBCollider* wall6Collider = new AABBCollider(200, 150, wall6);
+	wall6->setCollider(wall6Collider);
+
+	Actor* wall7 = new Actor(800, 600, "wall");
+	wall7->getTransform()->setScale({ 100, 50 });
+	AABBCollider* wall7Collider = new AABBCollider(200, 150, wall7);
+	wall7->setCollider(wall7Collider);
 
 	//Adding the actors to the scene
 	addActor(Instructions);
@@ -89,6 +104,9 @@ void MainScene::start()
 	addActor(wall2);
 	addActor(wall3);
 	addActor(wall4);
+	addActor(wall5);
+	addActor(wall6);
+	addActor(wall7);
 
 	Scene::start();
 }

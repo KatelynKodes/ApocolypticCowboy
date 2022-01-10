@@ -53,6 +53,11 @@ void Bullet::onCollision(Actor* other)
 	{
 		Engine::destroy(this);
 	}
+	if (other->getName() == "PlayerBullet")
+	{
+		Engine::destroy(this);
+		Engine::destroy(other);
+	}
 }
 
 

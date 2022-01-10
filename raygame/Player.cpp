@@ -35,7 +35,7 @@ void Player::update(float deltaTime)
 
 	if (m_health <= 0)
 	{
-		getTransform()->setLocalPosition({ 10, 10 });
+		getTransform()->setLocalPosition({ 50, 100 });
 		m_health = 20;
 	}
 
