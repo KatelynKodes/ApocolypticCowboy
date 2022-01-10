@@ -46,6 +46,8 @@ void Engine::draw()
 {
 	BeginDrawing();
 
+	ClearBackground(BLACK);
+
 	m_scenes[m_currentSceneIndex]->draw();
 	m_scenes[m_currentSceneIndex]->drawUI();
 

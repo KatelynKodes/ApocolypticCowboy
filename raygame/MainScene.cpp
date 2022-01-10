@@ -44,20 +44,31 @@ void MainScene::start()
 	spinningEnemy4->getTransform()->setScale({ 80,80 });
 	spinningEnemy4->setHealthText(spinningEnemyHealth4);
 
-	Actor* rotater = new Actor(10, 10, "rotater");
-	Transform2D* rotatorTransfrom = new Transform2D(rotater);
-	spinningEnemy->getTransform()->addChild(rotatorTransfrom);
-	rotater->getTransform()->setScale({ 50, 50 });
-	CircleCollider* childCollider = new CircleCollider(10, rotater);
-	rotater->setCollider(childCollider);
-
 	//Mimic
-	MimicEnemy* mimicEnemy = new MimicEnemy(800, 500, "Mimic", player->getHealth());
+	MimicEnemy* mimicEnemy = new MimicEnemy(200, 200, "enemy", player->getHealth());
 	UIText* mimicHealth = new UIText(0, 0, "mimic health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	mimicEnemy->getTransform()->setScale({ 50,50 });
 	mimicEnemy->setHealthText(mimicHealth);
 
-	Actor* wall = new Actor(300, 100, "wall");
+	Actor* child = new Actor(0, 0, "child");
+	mimicEnemy->getTransform()->addChild(child->getTransform());
+	child->getTransform()->setScale({ 50, 50 });
+	CircleCollider* childCollider = new CircleCollider(30, child);
+	child->setCollider(childCollider);
+
+	Actor* rotator = new Actor(.02f, 0, "rotator");
+	child->getTransform()->addChild(rotator->getTransform());
+	rotator->getTransform()->setScale({ 100, 100 });
+	CircleCollider* rotatorCollider = new CircleCollider(20, rotator);
+	rotator->setCollider(rotatorCollider);
+
+	Actor* rotator2 = new Actor(-.02f, 0, "rotator");
+	child->getTransform()->addChild(rotator2->getTransform());
+	rotator2->getTransform()->setScale({ 100, 100 });
+	CircleCollider* rotator2Collider = new CircleCollider(20, rotator2);
+	rotator2->setCollider(rotator2Collider);
+
+	Actor* wall = new Actor(300, 100, "house");
 	wall->getTransform()->setScale({ 100, 100 });
 	AABBCollider* wallCollider = new AABBCollider(100, 100, wall);
 	wall->setCollider(wallCollider);
@@ -82,18 +93,18 @@ void MainScene::start()
 	AABBCollider* wall4Collider = new AABBCollider(1000, 0, wall4);
 	wall4->setCollider(wall4Collider);
 
-	Actor* wall5 = new Actor(400, 800, "wall");
-	wall5->getTransform()->setScale({ 100, 400 });
-	AABBCollider* wall5Collider = new AABBCollider(200, 400, wall5);
+	Actor* wall5 = new Actor(400, 600, "house2");
+	wall5->getTransform()->setScale({ 200, 200 });
+	AABBCollider* wall5Collider = new AABBCollider(200, 200, wall5);
 	wall5->setCollider(wall5Collider);
 
-	Actor* wall6 = new Actor(800, 250, "wall");
-	wall6->getTransform()->setScale({ 100, 50 });
+	Actor* wall6 = new Actor(800, 250, "house1");
+	wall6->getTransform()->setScale({ 200, 150 });
 	AABBCollider* wall6Collider = new AABBCollider(200, 150, wall6);
 	wall6->setCollider(wall6Collider);
 
-	Actor* wall7 = new Actor(800, 550, "wall");
-	wall7->getTransform()->setScale({ 100, 50 });
+	Actor* wall7 = new Actor(800, 550, "house");
+	wall7->getTransform()->setScale({ 200, 150 });
 	AABBCollider* wall7Collider = new AABBCollider(200, 150, wall7);
 	wall7->setCollider(wall7Collider);
 
@@ -101,6 +112,7 @@ void MainScene::start()
 	addActor(Instructions);
 	addActor(player);
 	addActor(mimicEnemy);
+	addActor(child);
 	addActor(enemy);
 	addActor(spinningEnemy);
 	addActor(spinningEnemy3);
@@ -113,7 +125,6 @@ void MainScene::start()
 	addActor(wall5);
 	addActor(wall6);
 	addActor(wall7);
-	//addActor(rotater);
 
 	Scene::start();
 }

@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include "Transform2D.h"
+#include "SpriteComponent.h"
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
@@ -21,6 +22,15 @@ Actor::Actor(float x, float y, const char* name = "Actor")
     m_transform = new Transform2D(this);
     m_transform->setLocalPosition({ x,y });
     m_name = name;
+
+    if (m_name == "house")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house.png"))));
+    if (m_name == "house1")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house1.png"))));
+    if (m_name == "house2")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house2.png"))));
+    if (m_name == "rotator")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
 }
 
 

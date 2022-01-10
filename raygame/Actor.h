@@ -2,6 +2,7 @@
 class Transform2D;
 class Collider;
 class Component;
+class SpriteComponent;
 
 class Actor
 {
@@ -18,6 +19,18 @@ public:
     /// </summary>
     /// <returns>If the actors start function has been called.</returns>
     bool getStarted() { return m_started; }
+
+    /// <summary>
+    /// Returns the value of the sprite component attatched to the Enemy
+    /// </summary>
+    /// <returns> m_spriteComponent </returns>
+    SpriteComponent* getSpriteComponent() { return m_spriteComponent; }
+
+    /// <summary>
+    /// Sets the value of the move component attatched to the enemy to a new value 
+    /// </summary>
+    /// <param name="value">The value to set the SpriteComponent value to</param>
+    void setSpriteComponent(SpriteComponent* value) { m_spriteComponent = value; }
 
     /// <returns> The transform attached to this actor.</returns>
     Transform2D* getTransform() { return m_transform; }
@@ -118,6 +131,7 @@ protected:
 private:
     bool m_started;
     Transform2D* m_transform;
+    SpriteComponent* m_spriteComponent;
     Collider* m_collider;
     Component** m_components;
     unsigned int m_componentCount;
