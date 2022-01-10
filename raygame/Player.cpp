@@ -118,7 +118,7 @@ void Player::onCollision(Actor* other)
 	}
 	if (other->getName() == "wall")
 	{
-		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
+		getTransform()->setWorldPostion(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
 	}
 		
 }

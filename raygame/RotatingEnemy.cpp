@@ -19,8 +19,7 @@ void RotatingEnemy::start()
 
 void RotatingEnemy::update(float deltaTime)
 {
-	Enemy::update(deltaTime);
-
+	
 	if (GetIsAlive())
 	{
 		getTransform()->rotate(PI * deltaTime);
@@ -43,4 +42,6 @@ void RotatingEnemy::update(float deltaTime)
 	{
 		Engine::destroy(this);
 	}
+
+	Enemy::update(deltaTime);
 }

@@ -38,8 +38,6 @@ void FollowEnemy::start()
 
 void FollowEnemy::update(float deltaTime)
 {
-	Enemy::update(deltaTime);
-
 	if (GetIsAlive())
 	{
 		//Get the move direction by subtracting the follow enemies position by the direction of the chasee
@@ -68,9 +66,10 @@ void FollowEnemy::update(float deltaTime)
 	}
 	else
 	{
-		FollowEnemy::~FollowEnemy();
 		Engine::destroy(this);
 	}
+
+	Enemy::update(deltaTime);
 }
 
 

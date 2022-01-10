@@ -40,9 +40,6 @@ void MimicEnemy::update(float deltaTime)
 		Engine::destroy(this);
 	}
 
-	if (GetHealth() <= 0)
-		Engine::destroy(this);
-
 	Enemy::update(deltaTime);
 }
 
