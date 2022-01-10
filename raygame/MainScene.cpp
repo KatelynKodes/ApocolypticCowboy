@@ -1,6 +1,4 @@
 #include "MainScene.h"
-#include "SpriteComponent.h"
-#include "MoveComponent.h"
 #include "Transform2D.h"
 #include "Player.h"
 #include "FollowEnemy.h"
@@ -16,10 +14,13 @@ void MainScene::start()
 	UIText* Instructions = new UIText(0, 0, "Instructions", "Press WASD to move, press SPACE to shoot", (float)1000, (float)50, (float)25, "resources/fonts/jupiter_crash.png", BLACK, WHITE);
 
 	//Player
+	UIText* playerHealthText = new UIText(20, 19, "Player Health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	Player* player = new Player(20, 50, 100, "Player");
 	player->getTransform()->setScale({ 50, 50 });
+	player->setPlayerHealthText(playerHealthText);
 	CircleCollider* playerCollider = new CircleCollider(25, player);
 	player->setCollider(playerCollider);
+
 
 	//The following Enemy
 	FollowEnemy* enemy = new FollowEnemy(950, 750, "enemy", 20, 150, player);
@@ -51,7 +52,7 @@ void MainScene::start()
 	rotater->setCollider(childCollider);
 
 	//Mimic
-	MimicEnemy* mimicEnemy = new MimicEnemy(800, 500, "enemy", 25);
+	MimicEnemy* mimicEnemy = new MimicEnemy(800, 500, "Mimic", player->getHealth());
 	UIText* mimicHealth = new UIText(0, 0, "mimic health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	mimicEnemy->getTransform()->setScale({ 50,50 });
 	mimicEnemy->setHealthText(mimicHealth);
@@ -122,3 +123,7 @@ void MainScene::draw()
 	ClearBackground(ORANGE);
 	Scene::draw();
 }
+
+	
+	
+	

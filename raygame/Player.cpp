@@ -2,6 +2,7 @@
 #include "InputComponent.h"
 #include "MoveComponent.h"
 #include "SpriteComponent.h"
+#include "HealthComponent.h"
 #include "Transform2D.h"
 #include "Bullet.h"
 #include "Engine.h"
@@ -15,18 +16,18 @@ void Player::start()
 {
 	Actor::start();
 
+	//Input and move components
 	m_inputComponent = dynamic_cast<InputComponent*>(addComponent(new InputComponent()));
 	m_moveComponent = dynamic_cast<MoveComponent*>(addComponent(new MoveComponent()));
 	m_moveComponent->setMaxSpeed(10);
 	m_spriteComponent = dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/player.png")));
 
 	m_powerupStatus = false;
-
 	m_currentTime = 0;
-
-	//Set spawn point
-	//Set move speed
-	//Set position clamps
+	//Health Component
+	m_healthComponent = dynamic_cast<HealthComponent*>(addComponent(new HealthComponent()));
+	m_healthComponent->setCurrHealth(m_health);
+	m_healthComponent->setUIText(m_playerHealthText);
 }
 
 void Player::update(float deltaTime)
@@ -79,6 +80,17 @@ void Player::update(float deltaTime)
 
 	//Set the players velocity 
 	m_moveComponent->setVelocity(moveDirection.getNormalized() * 200);
+
+
+	//Sets the current health to the players current health
+	m_healthComponent->setCurrHealth(m_health);
+
+
+	//Set the health text to always be following the player
+	MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
+		(getTransform()->getLocalPosition().y - 50) };
+	m_playerHealthText->getTransform()->setLocalPosition(HealthTextPos);
+	
 }
 
 void Player::draw()

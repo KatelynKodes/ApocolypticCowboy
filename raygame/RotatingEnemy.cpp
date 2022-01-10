@@ -7,6 +7,8 @@
 #include <stdlib.h> 
 #include <ctime>
 
+RotatingEnemy::RotatingEnemy(float x, float y, const char* name, float health) : Enemy(x, y, name, health) {};
+
 void RotatingEnemy::start()
 {
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/canon.png"))));
@@ -17,27 +19,28 @@ void RotatingEnemy::start()
 
 void RotatingEnemy::update(float deltaTime)
 {
-	getTransform()->rotate(PI * deltaTime);
+	Enemy::update(deltaTime);
 
-	m_startTime = clock();
-
-	float timeBetweenShots = rand() % 2500 + 800;
-
-	if (m_startTime - m_currentTime > timeBetweenShots)
+	if (GetIsAlive())
 	{
-		Scene* currentScene = Engine::getCurrentScene();
-		Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "EnemyBullet");
-		bullet->getTransform()->setScale({ 50, 50 });
-		currentScene->addActor(bullet);
+		getTransform()->rotate(PI * deltaTime);
 
-		m_currentTime = m_startTime;
+		m_startTime = clock();
+
+		float timeBetweenShots = rand() % 2500 + 800;
+
+		if (m_startTime - m_currentTime > timeBetweenShots)
+		{
+			Scene* currentScene = Engine::getCurrentScene();
+			Bullet* bullet = new Bullet(this, 500, getTransform()->getForward(), getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, "EnemyBullet");
+			bullet->getTransform()->setScale({ 50, 50 });
+			currentScene->addActor(bullet);
+
+			m_currentTime = m_startTime;
+		}
 	}
-
-	if (GetHealth() <= 0)
+	else
+	{
 		Engine::destroy(this);
-
-
-	Actor::update(deltaTime);
-
-
+	}
 }

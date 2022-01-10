@@ -14,6 +14,12 @@ Enemy::Enemy(float x, float y, const char* name, float health) : Actor:: Actor(x
 
 Enemy::~Enemy()
 {
+	delete m_enemyCollider;
+	delete m_spriteComponent;
+	delete m_moveComponent;
+	delete m_healthText;
+	delete m_healthComponent;
+	Actor::~Actor();
 }
 
 void Enemy::start()
@@ -37,9 +43,20 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
-	MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
-		(getTransform()->getLocalPosition().y - 50) };
-	m_healthText->getTransform()->setLocalPosition(HealthTextPos);
+	if (m_health <= 0)
+	{
+		m_isAlive = false;
+	}
+
+	if (m_isAlive == true)
+	{
+		m_healthComponent->setCurrHealth(m_health);
+
+		MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
+			(getTransform()->getLocalPosition().y - 50) };
+		m_healthText->getTransform()->setLocalPosition(HealthTextPos);
+	}
+
 	Actor::update(deltaTime);
 }
 

@@ -8,6 +8,7 @@ class FollowEnemy :
 public:
 	//Constructor
 	FollowEnemy(float x, float y, const char* name, float health, float enemySpeed, Actor* chasee);
+	~FollowEnemy();
 
 	//Start and Update 
 	void start() override;

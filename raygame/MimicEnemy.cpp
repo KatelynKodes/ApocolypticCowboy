@@ -5,6 +5,12 @@
 #include "Transform2D.h"
 #include "Engine.h"
 
+MimicEnemy::~MimicEnemy()
+{
+	delete m_inputComponent;
+	Enemy::~Enemy();
+}
+
 void MimicEnemy::start()
 {
 	setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/mimic.png"))));
@@ -17,14 +23,22 @@ void MimicEnemy::start()
 
 void MimicEnemy::update(float deltaTime)
 {
-	
+	if (GetIsAlive())
+	{
+		MathLibrary::Vector2 moveDir = m_inputComponent->getReverseMoveAxis();
 
-	MathLibrary::Vector2 moveDir= m_inputComponent->getReverseMoveAxis();
+		//If the velocity is greater than 0...
+		if (getMoveComponent()->getVelocity().getMagnitude() > 0)
+			//...Rotate the player
+			getTransform()->setForward(getMoveComponent()->getVelocity());
 
-	//If the velocity is greater than 0...
-	if (getMoveComponent()->getVelocity().getMagnitude() > 0)
-		//...Rotate the player
-		getTransform()->setForward(getMoveComponent()->getVelocity());
+		//Set the players velocity 
+		getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
+	}
+	else
+	{
+		Engine::destroy(this);
+	}
 
 	//Set the players velocity 
 	getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
