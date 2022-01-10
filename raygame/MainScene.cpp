@@ -45,7 +45,7 @@ void MainScene::start()
 	spinningEnemy4->setHealthText(spinningEnemyHealth4);
 
 	//Mimic
-	MimicEnemy* mimicEnemy = new MimicEnemy(200, 200, "enemy", player->getHealth());
+	MimicEnemy* mimicEnemy = new MimicEnemy(700, 500, "enemy", player->getHealth());
 	UIText* mimicHealth = new UIText(0, 0, "mimic health", "0/0", (float)50, (float)50, (float)25, "resources/fonts/jupiter_crash.png", Color(), RED);
 	mimicEnemy->getTransform()->setScale({ 50,50 });
 	mimicEnemy->setHealthText(mimicHealth);
@@ -112,7 +112,6 @@ void MainScene::start()
 	addActor(Instructions);
 	addActor(player);
 	addActor(mimicEnemy);
-	addActor(child);
 	addActor(enemy);
 	addActor(spinningEnemy);
 	addActor(spinningEnemy3);

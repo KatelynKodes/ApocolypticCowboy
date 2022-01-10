@@ -120,5 +120,9 @@ void Player::onCollision(Actor* other)
 	{
 		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
 	}
+	if (other->getName() == "rotator")
+	{
+		m_health -= 5;
+	}
 		
 }

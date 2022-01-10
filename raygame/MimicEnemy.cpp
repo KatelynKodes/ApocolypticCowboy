@@ -43,10 +43,6 @@ void MimicEnemy::update(float deltaTime)
 	else
 	{
 		Engine::destroy(this);
-		for (int i = 0; i < getTransform()->getChildCount(); i++)
-		{
-			getTransform()->removeChild(i);
-		}
 	}
 
 	Enemy::update(deltaTime);
