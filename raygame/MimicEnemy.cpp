@@ -40,10 +40,6 @@ void MimicEnemy::update(float deltaTime)
 		Engine::destroy(this);
 	}
 
-	//Set the players velocity 
-	getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
-
-
 	if (GetHealth() <= 0)
 		Engine::destroy(this);
 
