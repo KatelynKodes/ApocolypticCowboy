@@ -104,7 +104,7 @@ void Player::onCollision(Actor* other)
 	if (other->getName() == "enemy")
 	{
 		Engine::destroy(other);
-		m_health -= 5;
+		m_health -= 10;
 	}
 	if (other->getName() == "EnemyBullet")
 	{
@@ -116,7 +116,7 @@ void Player::onCollision(Actor* other)
 		Engine::destroy(other);
 		m_powerupStatus = true;
 	}
-	if (other->getName() == "wall")
+	if (other->getName() == "house" || other->getName() == "house1" || other->getName() == "house2" || other->getName() == "wall")
 	{
 		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
 	}

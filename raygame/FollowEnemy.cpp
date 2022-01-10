@@ -68,7 +68,6 @@ void FollowEnemy::update(float deltaTime)
 	}
 	else
 	{
-		FollowEnemy::~FollowEnemy();
 		Engine::destroy(this);
 	}
 }

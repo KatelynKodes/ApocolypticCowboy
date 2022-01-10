@@ -34,14 +34,20 @@ void MimicEnemy::update(float deltaTime)
 
 		//Set the players velocity 
 		getMoveComponent()->setVelocity(moveDir.getNormalized() * 200);
+
+		for (int i = 0; i < getTransform()->getChildCount(); i++)
+		{
+			getTransform()->getChildren()[i]->rotate((PI / 2) * deltaTime);
+		}
 	}
 	else
 	{
 		Engine::destroy(this);
+		for (int i = 0; i < getTransform()->getChildCount(); i++)
+		{
+			getTransform()->removeChild(i);
+		}
 	}
-
-	if (GetHealth() <= 0)
-		Engine::destroy(this);
 
 	Enemy::update(deltaTime);
 }
