@@ -24,7 +24,7 @@ void Scene::addUIElement(Actor* actor)
     //Adds all children of the UI to the scene
     for (int i = 0; i < actor->getTransform()->getChildCount(); i++)
     {
-        m_UIElements.addActor(actor->getTransform()->getChildren()[i]->getOwner());
+        addUIElement(actor->getTransform()->getChildren()[i]->getOwner());
     }
 }
 
