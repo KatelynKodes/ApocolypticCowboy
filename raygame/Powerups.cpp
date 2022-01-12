@@ -30,7 +30,7 @@ void Powerups::update(float deltaTime)
 void Powerups::draw()
 {
 	Actor::draw();
-	getCollider()->draw();
+	//getCollider()->draw();
 }
 
 
