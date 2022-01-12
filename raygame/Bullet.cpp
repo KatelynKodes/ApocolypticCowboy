@@ -49,7 +49,8 @@ void Bullet::draw()
 
 void Bullet::onCollision(Actor* other)
 {
-	if (other->getName() == "wall" || other->getName() == "rotator")
+	if (other->getName() == "wall" || other->getName() == "rotator" || other->getName() == "house" || other->getName() == "house1"
+		|| other->getName() == "house2" || other->getName() == "house3" || other->getName() == "house4")
 	{
 		Engine::destroy(this);
 	}

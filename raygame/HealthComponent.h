@@ -19,10 +19,11 @@ public:
     /// Sets the UItext used to display the health of the enemy
     /// </summary>
     /// <param name="value"></param>
-    void setUIText(UIText* text) { m_healthText = text; }
+    void setUIText(UIText* text) { m_healthTextComponent = text; }
 
 private:
     float m_currHealth;
-    UIText* m_healthText;
+    UIText* m_healthTextComponent;
+    char* m_healthText;
 };
 

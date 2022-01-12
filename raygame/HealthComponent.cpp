@@ -4,15 +4,16 @@
 #include <iostream>
 void HealthComponent::update(float deltaTime)
 {
-	
-	const char* currHealthText = new char[20]{""};
+	delete[] m_healthText;
 
-	sprintf_s((char*)currHealthText, sizeof(char) * 20, "%d", (int)m_currHealth);
+	m_healthText = new char[20]{ " " };
 
-	m_healthText->setText(currHealthText);
+	sprintf_s(m_healthText, sizeof(char) * 20, "%d", (int)m_currHealth);
+
+	m_healthTextComponent->setText(m_healthText);
 }
 
 void HealthComponent::draw()
 {
-	m_healthText->draw();
+	m_healthTextComponent->draw();
 }

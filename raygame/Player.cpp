@@ -116,9 +116,10 @@ void Player::onCollision(Actor* other)
 		Engine::destroy(other);
 		m_powerupStatus = true;
 	}
-	if (other->getName() == "house" || other->getName() == "house1" || other->getName() == "house2" || other->getName() == "wall")
+	if (other->getName() == "house" || other->getName() == "house1" || other->getName() == "house2" || other->getName() == "wall" 
+		|| other->getName() == "house3" || other->getName() == "house4")
 	{
-		m_moveComponent->setVelocity(other->getCollider()->getCollisionNormal() * m_moveComponent->getVelocity().getMagnitude());
+		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - getCollider()->getCollisionNormal());
 	}
 	if (other->getName() == "rotator")
 	{
