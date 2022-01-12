@@ -19,7 +19,6 @@ public:
 	/// <param name="name"> The name of the enemy </param>
 	/// <param name="health"> How much health the enemy has </param>
 	Enemy(float x, float y, const char* name, float health);
-	~Enemy();
 
 	/// <summary>
 	/// Gets the value of the enemies health

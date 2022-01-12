@@ -13,13 +13,6 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 	m_chasee = chasee;
 }
 
-FollowEnemy::~FollowEnemy()
-{
-	delete m_chasee;
-	delete m_followComponent;
-	Enemy::~Enemy();
-}
-
 void FollowEnemy::start()
 {
 	//Sprite and movement component

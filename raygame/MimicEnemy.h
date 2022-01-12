@@ -10,7 +10,6 @@ class MimicEnemy :
 {
 public:
     MimicEnemy(float x, float y, const char* name, float health) : Enemy::Enemy(x, y, name, health) {};
-    ~MimicEnemy();
 
     void start() override;
     void update(float deltaTime) override;

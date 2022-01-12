@@ -4,36 +4,17 @@
     <ClCompile Include="ActorArray.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainScene.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Transform2D.cpp" />
-    <ClCompile Include="AABBCollider.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="CircleCollider.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Actors</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
     <ClCompile Include="FollowEnemy.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Actors</Filter>
-    </ClCompile>
     <ClCompile Include="MimicEnemy.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
-    <ClCompile Include="Powerups.cpp">
-      <Filter>Actors</Filter>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="Enemy.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
     <ClCompile Include="RotatingEnemy.cpp">
@@ -41,11 +22,18 @@
     </ClCompile>
     <ClCompile Include="UIText.cpp">
       <Filter>Actors</Filter>
-    <ClCompile Include="Collider.cpp">
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="AABBCollider.cpp">
       <Filter>Colliders</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Components</Filter>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Colliders</Filter>
     </ClCompile>
     <ClCompile Include="FollowComponent.cpp">
       <Filter>Components</Filter>
@@ -56,27 +44,19 @@
     <ClCompile Include="InputComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
     <ClCompile Include="MoveComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="AABBCollider.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="CircleCollider.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Colliders</Filter>
-    </ClCompile>
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Powerups.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
-    <ClCompile Include="UIText.cpp">
+    <ClCompile Include="Player.cpp">
       <Filter>Actors</Filter>
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
@@ -89,36 +69,17 @@
   <ItemGroup>
     <ClInclude Include="ActorArray.h" />
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="MainScene.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="Transform2D.h" />
-    <ClInclude Include="AABBCollider.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="CircleCollider.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Actors</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
       <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="FollowEnemy.h">
       <Filter>Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Actors</Filter>
-    </ClInclude>
     <ClInclude Include="MimicEnemy.h">
       <Filter>Actors</Filter>
     </ClInclude>
-    <ClInclude Include="Powerups.h">
-      <Filter>Actors</Filter>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="Enemy.h">
       <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="RotatingEnemy.h">
@@ -126,11 +87,18 @@
     </ClInclude>
     <ClInclude Include="UIText.h">
       <Filter>Actors</Filter>
-    <ClInclude Include="Collider.h">
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="AABBCollider.h">
       <Filter>Colliders</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Components</Filter>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Colliders</Filter>
     </ClInclude>
     <ClInclude Include="FollowComponent.h">
       <Filter>Components</Filter>
@@ -141,27 +109,19 @@
     <ClInclude Include="InputComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="MoveComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="SpriteComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="AABBCollider.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="CircleCollider.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.h">
-      <Filter>Colliders</Filter>
-    </ClInclude>
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Powerups.h">
       <Filter>Actors</Filter>
     </ClInclude>
-    <ClInclude Include="UIText.h">
+    <ClInclude Include="Player.h">
       <Filter>Actors</Filter>
     </ClInclude>
     <ClInclude Include="MainScene.h">
@@ -172,17 +132,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Colliders">
-      <UniqueIdentifier>{9a5becea-b888-4e1f-bca4-20f25c30617a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Actors">
-      <UniqueIdentifier>{c827f638-1166-4186-9690-7839357cf36e}</UniqueIdentifier>
+      <UniqueIdentifier>{d79db8f8-b56b-4447-b56f-06423a9b45c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colliders">
+      <UniqueIdentifier>{5f56c444-9da8-4e65-a2da-a842991abba8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Components">
-      <UniqueIdentifier>{a8d19ea1-3a9f-448f-bc08-047a9222de80}</UniqueIdentifier>
+      <UniqueIdentifier>{330f87de-5474-4967-896a-d5394ce5ea1b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Scenes">
-      <UniqueIdentifier>{8081b1a8-8702-4533-b7bd-95b7b9a4cd29}</UniqueIdentifier>
+      <UniqueIdentifier>{00188b6f-a10d-47f0-91af-c17215732d90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
