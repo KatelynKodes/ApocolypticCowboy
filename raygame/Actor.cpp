@@ -23,6 +23,8 @@ Actor::Actor(float x, float y, const char* name = "Actor")
     m_transform->setLocalPosition({ x,y });
     m_name = name;
 
+    //If the name of the actor is different then test the names
+    //and if yhe name matches add the sprite to the actor
     if (m_name == "house")
         setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house.png"))));
     if (m_name == "house1")

@@ -29,7 +29,7 @@ public:
 	void draw() override;
 	void update(float deltaTime) override;
 
-
+	//The on collision
 	void onCollision(Actor* other) override;
 
 private:

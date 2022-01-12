@@ -11,12 +11,26 @@ class Bullet :
 public:
 	Bullet(Actor* owner, float speed, MathLibrary::Vector2 direction, float x, float y, const char* name = "Bullet");
 
+	/// <summary>
+	/// The base start
+	/// </summary>
 	void start() override;
 
+	/// <summary>
+   /// Called every loop to update on screen visuals
+   /// </summary>
 	void draw() override;
 
+	/// <summary>
+	/// Called every frame
+	/// </summary>
+	/// <param name="deltaTime">The time that has passed from the previous frame to the current</param>
 	void update(float deltaTime) override;
 
+	/// <summary>
+	/// Called when a collision between this actor and another occurs. 
+	/// </summary>
+	/// <param name="other">The actor this actor collided with.</param>
 	void onCollision(Actor* other) override;
 
 private:

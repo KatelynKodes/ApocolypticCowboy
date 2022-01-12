@@ -15,6 +15,7 @@ UIText::UIText(int x, int y, const char* name, const char* text, float width, fl
 
 void UIText::draw()
 {
+	//Draws the textbox for the UI elements
 	Rectangle textbox = Rectangle{getTransform()->getLocalPosition().x, getTransform()->getLocalPosition().y, getWidth(), getHeight()};
 	RAYLIB_H::DrawRectangleRec(textbox, m_textBoxColor);
 	RAYLIB_H::DrawTextRec(m_font, getText(), textbox, (float)m_fontSize, 1, true, m_textColor);

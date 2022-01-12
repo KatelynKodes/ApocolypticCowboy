@@ -56,6 +56,7 @@ bool CircleCollider::checkCollisionAABB(AABBCollider* otherCollider)
     //Sets the collision normal of this collider
     setCollisionNormal((closestPoint - getOwner()->getTransform()->getWorldPosition()).getNormalized());
 
+    //Sets the collision normal of the other collider
     otherCollider->setCollisionNormal((getOwner()->getTransform()->getWorldPosition() - closestPoint).getNormalized());
 
     //Get the distance between the circle and the closest point found
@@ -70,5 +71,6 @@ bool CircleCollider::checkCollisionAABB(AABBCollider* otherCollider)
 
 void CircleCollider::draw()
 {
+    //Draws the collider
     RAYLIB_H::DrawCircleLines((int)getOwner()->getTransform()->getWorldPosition().x, (int)getOwner()->getTransform()->getWorldPosition().y, m_collisionRadius, WHITE);
 }

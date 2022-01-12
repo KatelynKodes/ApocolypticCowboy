@@ -50,12 +50,14 @@ void MainScene::start()
 	mimicEnemy->getTransform()->setScale({ 50,50 });
 	mimicEnemy->setHealthText(mimicHealth);
 
+	//The invisible actor connected to the mimic
 	Actor* child = new Actor(0, 0, "child");
 	mimicEnemy->getTransform()->addChild(child->getTransform());
 	child->getTransform()->setScale({ 50, 50 });
 	CircleCollider* childCollider = new CircleCollider(30, child);
 	child->setCollider(childCollider);
 
+	//The two actors childed to the invisible actor to rotate around the mimic
 	Actor* rotator = new Actor(.02f, 0, "rotator");
 	child->getTransform()->addChild(rotator->getTransform());
 	rotator->getTransform()->setScale({ 100, 100 });
@@ -68,11 +70,8 @@ void MainScene::start()
 	CircleCollider* rotator2Collider = new CircleCollider(12, rotator2);
 	rotator2->setCollider(rotator2Collider);
 
-	Actor* wall = new Actor(300, 100, "house");
-	wall->getTransform()->setScale({ 100, 100 });
-	AABBCollider* wallCollider = new AABBCollider(100, 100, wall);
-	wall->setCollider(wallCollider);
 
+	//The four walls on the outside of the screen
 	Actor* wall1 = new Actor(0, 400, "wall");
 	wall1->getTransform()->setScale({ 0, 800 });
 	AABBCollider* wall1Collider = new AABBCollider(0, 800, wall1);
@@ -93,6 +92,13 @@ void MainScene::start()
 	AABBCollider* wall4Collider = new AABBCollider(1000, 0, wall4);
 	wall4->setCollider(wall4Collider);
 
+
+	//The house sprites
+	Actor* wall = new Actor(300, 100, "house");
+	wall->getTransform()->setScale({ 100, 100 });
+	AABBCollider* wallCollider = new AABBCollider(100, 100, wall);
+	wall->setCollider(wallCollider);
+
 	Actor* wall5 = new Actor(400, 600, "house2");
 	wall5->getTransform()->setScale({ 200, 200 });
 	AABBCollider* wall5Collider = new AABBCollider(180, 140, wall5);
@@ -108,6 +114,8 @@ void MainScene::start()
 	AABBCollider* wall7Collider = new AABBCollider(200, 150, wall7);
 	wall7->setCollider(wall7Collider);
 
+
+	//The background
 	Actor* background = new Actor(500, 450, "background");
 	background->getTransform()->setScale({ 1000, 800 });
 
@@ -129,6 +137,7 @@ void MainScene::start()
 	addActor(player);
 	addActor(mimicEnemy);
 
+	//Call base start
 	Scene::start();
 }
 

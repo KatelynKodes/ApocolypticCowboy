@@ -32,6 +32,7 @@ void Enemy::start()
 	//Set the starting values
 	m_health = m_maxhealth;
 
+	//Sets the enemy collider
 	m_enemyCollider = new CircleCollider(this);
 
 	setCollider(m_enemyCollider);
@@ -43,20 +44,26 @@ void Enemy::start()
 
 void Enemy::update(float deltaTime)
 {
+	//If the health is less than 0
 	if (m_health <= 0)
 	{
+		//set isAlive to be false
 		m_isAlive = false;
 	}
 
+	//If the enemy is alives
 	if (m_isAlive == true)
 	{
+		//set the health component to be the current health
 		m_healthComponent->setCurrHealth(m_health);
 
+		//set the position of the enemy health to be the position of the enemy
 		MathLibrary::Vector2 HealthTextPos = MathLibrary::Vector2{ (getTransform()->getLocalPosition().x - 20),
 			(getTransform()->getLocalPosition().y - 50) };
 		m_healthText->getTransform()->setLocalPosition(HealthTextPos);
 	}
 
+	//Call base update
 	Actor::update(deltaTime);
 }
 
@@ -68,13 +75,17 @@ void Enemy::draw()
 
 void Enemy::onCollision(Actor* other)
 {
+	//If the enemy collides with a bullet
 	if (other->getName() == "PlayerBullet") 
 	{
+		//Remove 5 health and destroy the bullet
 		m_health -= 5;
 		Engine::destroy(other);
 	}
+	//If the enemy collides with the upgraded bullet
 	if (other->getName() == "PlayerUpgradedBullet")
 	{
+		//Remove 10 health and destroy the bullet
 		m_health -= 10;
 		Engine::destroy(other);
 	}
