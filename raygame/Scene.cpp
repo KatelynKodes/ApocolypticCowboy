@@ -91,6 +91,11 @@ void Scene::destroyActorsInList()
             removeUIElement(actorToDelete);
 
         //Call actors clean up functions
+
+
+        for (int i = 0; i < actorToDelete->getTransform()->getChildCount(); i++)
+            actorToDelete->getTransform()->getChildren()[i]->setParent(actorToDelete->getTransform()->getParent());
+
         actorToDelete->end();
         actorToDelete->onDestroy();
 
