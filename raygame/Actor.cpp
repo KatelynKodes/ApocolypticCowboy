@@ -29,8 +29,12 @@ Actor::Actor(float x, float y, const char* name = "Actor")
         setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house1.png"))));
     if (m_name == "house2")
         setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house2.png"))));
+    if (m_name == "house4")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house4.png"))));
     if (m_name == "rotator")
         setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
+    if (m_name == "background")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/background.png"))));
 }
 
 
@@ -196,8 +200,8 @@ void Actor::draw()
 {
     for (int i = 0; i < m_componentCount; i++)
         m_components[i]->draw();
-
-    getCollider()->draw();
+    //if (getCollider())
+       // getCollider()->draw();
 }
 
 void Actor::end()

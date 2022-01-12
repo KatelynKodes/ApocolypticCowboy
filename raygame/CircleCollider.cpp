@@ -8,7 +8,7 @@
 CircleCollider::CircleCollider(Actor* owner) : Collider::Collider(owner, ColliderType::CIRCLE)
 {
     MathLibrary::Vector2 size = getOwner()->getTransform()->getScale();
-    m_collisionRadius = size.x > size.y ? size.x : size.y;
+    m_collisionRadius = (size.x > size.y ? size.x : size.y) / 2;
 }
 
 CircleCollider::CircleCollider(float collisionRadius, Actor* owner) : Collider::Collider(owner, ColliderType::CIRCLE)
@@ -52,6 +52,11 @@ bool CircleCollider::checkCollisionAABB(AABBCollider* otherCollider)
 
     //Add the direction vector to the AABB center to get the closest point to the circle
     MathLibrary::Vector2 closestPoint = otherCollider->getOwner()->getTransform()->getWorldPosition() + direction;
+
+    //Sets the collision normal of this collider
+    setCollisionNormal((closestPoint - getOwner()->getTransform()->getWorldPosition()).getNormalized());
+
+    otherCollider->setCollisionNormal((getOwner()->getTransform()->getWorldPosition() - closestPoint).getNormalized());
 
     //Get the distance between the circle and the closest point found
     float distanceFromClosestPoint = (getOwner()->getTransform()->getWorldPosition() - closestPoint).getMagnitude();

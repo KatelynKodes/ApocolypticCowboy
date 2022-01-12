@@ -32,7 +32,7 @@ void Enemy::start()
 	//Set the starting values
 	m_health = m_maxhealth;
 
-	m_enemyCollider = new CircleCollider(25, this);
+	m_enemyCollider = new CircleCollider(this);
 
 	setCollider(m_enemyCollider);
 
@@ -63,7 +63,7 @@ void Enemy::update(float deltaTime)
 void Enemy::draw()
 {
 	Actor::draw();
-	getCollider()->draw();
+	//getCollider()->draw();
 }
 
 void Enemy::onCollision(Actor* other)
@@ -78,6 +78,10 @@ void Enemy::onCollision(Actor* other)
 		m_health -= 10;
 		Engine::destroy(other);
 	}
+	/*if (other->getName() == "house" || other->getName() == "house1" || other->getName() == "house2" || other->getName() == "wall" || other->getName() == "house3")
+	{
+		m_moveComponent->setVelocity(other->getCollider()->getCollisionNormal() * m_moveComponent->getVelocity().getMagnitude());
+	}*/
 }
 
 

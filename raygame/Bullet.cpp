@@ -44,12 +44,12 @@ void Bullet::update(float deltaTime)
 void Bullet::draw()
 {
 	Actor::draw();
-	getCollider()->draw();
+	//getCollider()->draw();
 }
 
 void Bullet::onCollision(Actor* other)
 {
-	if (other->getName() == "wall")
+	if (other->getName() == "wall" || other->getName() == "rotator")
 	{
 		Engine::destroy(this);
 	}

@@ -95,23 +95,25 @@ void MainScene::start()
 
 	Actor* wall5 = new Actor(400, 600, "house2");
 	wall5->getTransform()->setScale({ 200, 200 });
-	AABBCollider* wall5Collider = new AABBCollider(200, 200, wall5);
+	AABBCollider* wall5Collider = new AABBCollider(180, 140, wall5);
 	wall5->setCollider(wall5Collider);
 
 	Actor* wall6 = new Actor(800, 250, "house1");
 	wall6->getTransform()->setScale({ 200, 150 });
-	AABBCollider* wall6Collider = new AABBCollider(200, 150, wall6);
+	AABBCollider* wall6Collider = new AABBCollider(140, 130, wall6);
 	wall6->setCollider(wall6Collider);
 
-	Actor* wall7 = new Actor(800, 550, "house");
+	Actor* wall7 = new Actor(800, 550, "house4");
 	wall7->getTransform()->setScale({ 200, 150 });
 	AABBCollider* wall7Collider = new AABBCollider(200, 150, wall7);
 	wall7->setCollider(wall7Collider);
 
+	Actor* background = new Actor(500, 450, "background");
+	background->getTransform()->setScale({ 1000, 800 });
+
 	//Adding the actors to the scene
 	addActor(Instructions);
-	addActor(player);
-	addActor(mimicEnemy);
+	addActor(background);
 	addActor(enemy);
 	addActor(spinningEnemy);
 	addActor(spinningEnemy3);
@@ -124,6 +126,8 @@ void MainScene::start()
 	addActor(wall5);
 	addActor(wall6);
 	addActor(wall7);
+	addActor(player);
+	addActor(mimicEnemy);
 
 	Scene::start();
 }

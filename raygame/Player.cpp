@@ -96,7 +96,7 @@ void Player::update(float deltaTime)
 void Player::draw()
 {
 	Actor::draw();
-	getCollider()->draw();
+	//getCollider()->draw();
 }
 
 void Player::onCollision(Actor* other)
@@ -118,7 +118,7 @@ void Player::onCollision(Actor* other)
 	}
 	if (other->getName() == "house" || other->getName() == "house1" || other->getName() == "house2" || other->getName() == "wall")
 	{
-		getTransform()->setWorldPosition(getTransform()->getWorldPosition() - (m_moveComponent->getVelocity().getNormalized() * (CircleCollider(this).getCollisionRadius() / 3)));
+		m_moveComponent->setVelocity(other->getCollider()->getCollisionNormal() * m_moveComponent->getVelocity().getMagnitude());
 	}
 	if (other->getName() == "rotator")
 	{

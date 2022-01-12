@@ -37,7 +37,7 @@ void MimicEnemy::update(float deltaTime)
 
 		for (int i = 0; i < getTransform()->getChildCount(); i++)
 		{
-			getTransform()->getChildren()[i]->rotate((PI / 2) * deltaTime);
+			getTransform()->getChildren()[i]->rotate((PI * 2) * deltaTime);
 		}
 	}
 	else
