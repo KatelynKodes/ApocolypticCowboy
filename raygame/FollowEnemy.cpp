@@ -14,14 +14,6 @@ FollowEnemy::FollowEnemy(float x, float y, const char* name, float health, float
 	m_chasee = chasee;
 }
 
-FollowEnemy::~FollowEnemy()
-{
-	//Deletes the components of this actor
-	delete m_chasee;
-	delete m_followComponent;
-	Enemy::~Enemy();
-}
-
 void FollowEnemy::start()
 {
 	//Sprite and movement component

@@ -12,16 +12,6 @@ Enemy::Enemy(float x, float y, const char* name, float health) : Actor:: Actor(x
 	m_maxhealth = health;
 }
 
-Enemy::~Enemy()
-{
-	delete m_enemyCollider;
-	delete m_spriteComponent;
-	delete m_moveComponent;
-	delete m_healthText;
-	delete m_healthComponent;
-	Actor::~Actor();
-}
-
 void Enemy::start()
 {
 	//Health Component

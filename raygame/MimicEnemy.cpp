@@ -5,12 +5,6 @@
 #include "Transform2D.h"
 #include "Engine.h"
 
-MimicEnemy::~MimicEnemy()
-{
-	delete m_inputComponent;
-	Enemy::~Enemy();
-}
-
 void MimicEnemy::start()
 {
 	//Sets sprite, input, and move components
