@@ -70,12 +70,6 @@ void MainScene::start()
 	CircleCollider* rotator2Collider = new CircleCollider(12, rotator2);
 	rotator2->setCollider(rotator2Collider);
 
-	//Houses and walls
-	Actor* wall = new Actor(300, 100, "house");
-	wall->getTransform()->setScale({ 100, 100 });
-	AABBCollider* wallCollider = new AABBCollider(100, 100, wall);
-	wall->setCollider(wallCollider);
-
 	//The four walls on the outside of the screen
 	Actor* wall1 = new Actor(0, 400, "wall");
 	wall1->getTransform()->setScale({ 0, 800 });
