@@ -17,12 +17,20 @@ void Powerups::start()
 	m_powerupCollider = new CircleCollider(23, this);
 	setCollider(m_powerupCollider);
 
+	//Sets the current time to be 0
+	m_currentTime = clock();
+
 	//Calls the base start
 	Actor::start();
 }
 
 void Powerups::update(float deltaTime)
 {
+	m_startTime = clock();
+
+	if (m_startTime - m_currentTime > 7500)
+		Engine::destroy(this);
+
 	//Rotates the powerup every frame
 	getTransform()->rotate(-2 * deltaTime);
 
