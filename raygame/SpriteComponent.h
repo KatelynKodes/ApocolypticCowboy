@@ -16,7 +16,16 @@ public:
 
 	~SpriteComponent() override; 
 
+	/// <summary>
+	/// returns the sprite's height
+	/// </summary>
+	/// <returns> the value of the m_health value </returns>
 	int getHeight() { return m_height; }
+
+	/// <summary>
+	/// returns the sprite's width
+	/// </summary>
+	/// <returns> the value of the m_health value </returns>
 	int getWidth() { return m_width; }
 
 	void draw() override;

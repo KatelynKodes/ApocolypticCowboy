@@ -10,7 +10,18 @@ public:
 
 	InputComponent(const char* name = "InputComponent") : Component::Component(name) {}
 
+	/// <summary>
+	/// Gets the axis values that are used to move depending on the input being given by the player
+	/// </summary>
 	MathLibrary::Vector2 getMoveAxis();
+
+	bool getSpacePress() { return RAYLIB_H::IsKeyPressed(m_action1Key); }
+
+	/// <summary>
+	/// Gets the reverse axis values that are used to move depending on the input given by the player
+	/// </summary>
+	/// <returns>Vector2 representing the direction the method returns based on what key is inputted </returns>
+	MathLibrary::Vector2 getReverseMoveAxis();
 
 private:
 	RAYLIB_H::KeyboardKey m_action1Key = RAYLIB_H::KeyboardKey::KEY_SPACE;

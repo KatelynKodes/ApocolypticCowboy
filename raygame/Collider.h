@@ -1,4 +1,6 @@
 #pragma once
+#include <Vector2.h>
+
 enum ColliderType
 {
 	CIRCLE,
@@ -32,6 +34,16 @@ public:
 	/// <param name="other">The actor to check collision against</param>
 	bool checkCollision(Actor* other);
 
+	/// <summary>
+	/// Gets the collision normal between two colliders
+	/// </summary>
+	MathLibrary::Vector2 getCollisionNormal() { return m_collisionNormal; }
+
+	/// <summary>
+	/// Sets the collision normal
+	/// </summary>
+	void setCollisionNormal(MathLibrary::Vector2 collisionNormal) { m_collisionNormal = collisionNormal; }
+
 
 	virtual bool checkCollisionCircle(CircleCollider* collider) { return false; }
 	virtual bool checkCollisionAABB(AABBCollider* collider) { return false; }
@@ -40,5 +52,6 @@ public:
 private:
 	Actor* m_owner;
 	ColliderType m_type;
+	MathLibrary::Vector2 m_collisionNormal;
 };
 

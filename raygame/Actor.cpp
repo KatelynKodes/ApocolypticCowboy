@@ -1,5 +1,6 @@
 #include "Actor.h"
 #include "Transform2D.h"
+#include "SpriteComponent.h"
 #include <string.h>
 #include "Collider.h"
 #include "Component.h"
@@ -11,6 +12,10 @@ Actor::Actor()
 
 Actor::~Actor()
 {
+    ///Deletes all components
+    for (int i = 0; i < m_componentCount; i++)
+        delete m_components[i];
+
     delete m_transform;
 }
 
@@ -21,17 +26,42 @@ Actor::Actor(float x, float y, const char* name = "Actor")
     m_transform = new Transform2D(this);
     m_transform->setLocalPosition({ x,y });
     m_name = name;
+
+    //If the name of the actor is different then test the names
+    //and if yhe name matches add the sprite to the actor
+    if (m_name == "house")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house.png"))));
+    if (m_name == "house1")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house1.png"))));
+    if (m_name == "house2")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house2.png"))));
+    if (m_name == "house4")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/house4.png"))));
+    if (m_name == "rotator")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/bullet.png"))));
+    if (m_name == "background")
+        setSpriteComponent(dynamic_cast<SpriteComponent*>(addComponent(new SpriteComponent("images/background.png"))));
 }
 
+Component* Actor::getComponent(const char* componentName)
+{
+    //Iterate through the component array
+    for (int i = 0; i < m_componentCount; i++)
+    {
+        //Return the comoponent if the name is the same as the current component
+        if (strcmp(m_components[i]->getName(), componentName) == 0)
+            return m_components[i];
+    }
 
-
-
+    //Return nullptr if the component is not in the list
+	return nullptr;
+}
 
 Component* Actor::addComponent(Component* component)
 {
     //Return null if this component has an owner already
     Actor* owner = component->getOwner();
-    if (owner && owner != this)
+    if (owner)
         return nullptr;
 
     component->assignOwner(this);
@@ -60,11 +90,8 @@ Component* Actor::addComponent(Component* component)
 
 bool Actor::removeComponent(Component* component)
 {
-    //Check to see if the actor was null
     if (!component)
-    {
         return false;
-    }
 
     bool componentRemoved = false;
     //Create a new array with a size one less than our old array
@@ -84,7 +111,6 @@ bool Actor::removeComponent(Component* component)
             componentRemoved = true;
         }
     }
-    
 
     if (componentRemoved)
     {
@@ -96,23 +122,21 @@ bool Actor::removeComponent(Component* component)
     }
     else
         delete[] newArray;
-    
+
     //Return whether or not the removal was successful
     return componentRemoved;
 }
 
 bool Actor::removeComponent(const char* name)
 {
-    //Check to see if the actor was null
     if (!name)
-    {
         return false;
-    }
 
     bool componentRemoved = false;
     Component* componentToDelete = nullptr;
+
     //Create a new array with a size one less than our old array
-    Component** newArray = new Component * [m_componentCount - 1];
+    Component** newArray = new Component* [m_componentCount - 1];
     //Create variable to access tempArray index
     int j = 0;
     //Copy values from the old array to the new array
@@ -122,6 +146,9 @@ bool Actor::removeComponent(const char* name)
         {
             newArray[j] = m_components[i];
             j++;
+
+            if (m_componentCount == 1)
+                componentRemoved = true;
         }
         else
         {
@@ -140,24 +167,9 @@ bool Actor::removeComponent(const char* name)
     }
     else
         delete[] newArray;
-    
+
     //Return whether or not the removal was successful
     return componentRemoved;
-}
-
-Component* Actor::getComponent(const char* name)
-{
-    //Iterate through the component array
-    for (int i = 0; i < m_componentCount; i++)
-    {
-        //Return the component if the name is the same as the current component
-        if (strcmp(m_components[i]->getName(), name) == 0)
-        {
-            return m_components[i];
-        }
-    }
-    //Return nullptr if the component is not in the list
-    return nullptr;
 }
 
 void Actor::start()
@@ -175,7 +187,7 @@ void Actor::update(float deltaTime)
 {
     for (int i = 0; i < m_componentCount; i++)
     {
-        if (m_components[i]->getStarted())
+        if (!m_components[i]->getStarted())
             m_components[i]->start();
 
         m_components[i]->update(deltaTime);
@@ -201,9 +213,10 @@ void Actor::onDestroy()
     for (int i = 0; i < m_componentCount; i++)
         m_components[i]->onDestroy();
 
-    //Removes this actor from its parent if it has one
+    Transform2D* parent = getTransform()->getParent();
+
     if (getTransform()->getParent())
-        getTransform()->getParent()->removeChild(getTransform());
+        parent->removeChild(getTransform());
 }
 
 bool Actor::checkForCollision(Actor* other)
